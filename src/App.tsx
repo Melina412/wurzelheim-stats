@@ -114,7 +114,7 @@ export default function App() {
           transition={{ delay: 0.55 }}
           className="mt-5 max-w-xl text-lg text-muted sm:text-xl"
         >
-          In <span className="font-semibold text-base-fg">unter 3 Jahren</span>{" "}
+          In <span className="font-semibold text-base-fg">unter 2 Jahren</span>{" "}
           von einer Handvoll Trainer:innen am Alexanderplatz zu einer der
           größten Communities in Berlin.
         </motion.p>
@@ -238,6 +238,22 @@ export default function App() {
           Anonyme Auswertung der Event-Check-ins — ohne Namen. Organisator:innen
           &amp; Ambassadoren liegen naturgemäß ganz oben.
         </p>
+      </section>
+
+      {/* THANKS */}
+      <section className="mx-auto max-w-2xl px-6 pb-24 text-center">
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          className="text-lg text-muted sm:text-xl"
+        >
+          Ein riesiges Dankeschön an{" "}
+          <span className="font-bold text-go-green">Bobby</span> und{" "}
+          <span className="font-bold text-go-green">Ute</span> — und an alle,
+          die diese Community mit Herzblut am Leben halten. Ohne euch wären das
+          hier nur Zahlen. 🫶
+        </motion.p>
       </section>
 
       <footer className="border-t border-base py-10 text-center text-sm text-muted">
