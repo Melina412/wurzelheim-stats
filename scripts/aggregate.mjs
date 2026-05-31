@@ -182,7 +182,6 @@ const stats = {
   dataAsOf,
   club: {
     name: club.name ?? "Wurzelheim Alexanderplatz",
-    avatarUrl: club.avatar_url ?? "",
   },
   totals: {
     events: events.length,

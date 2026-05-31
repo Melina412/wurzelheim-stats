@@ -49,7 +49,7 @@ export type Loyalty = {
 
 export type Stats = {
   dataAsOf: string;
-  club: { name: string; avatarUrl: string };
+  club: { name: string };
   totals: {
     events: number;
     uniqueParticipants: number;

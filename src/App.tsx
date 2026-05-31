@@ -79,16 +79,16 @@ export default function App() {
 
       {/* HERO */}
       <header className="mx-auto flex max-w-4xl flex-col items-center px-6 pt-24 pb-16 text-center">
-        {club.avatarUrl && (
-          <motion.img
-            initial={{ scale: 0, rotate: -20 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ type: "spring", stiffness: 200, damping: 15 }}
-            src={club.avatarUrl}
-            alt={club.name}
-            className="mb-6 h-48 w-48 rounded-3xl border border-base shadow-xl"
-          />
-        )}
+        <motion.img
+          initial={{ scale: 0, rotate: -20 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{ type: "spring", stiffness: 200, damping: 15 }}
+          src="/logo.png"
+          alt={`${club.name} Logo`}
+          width={192}
+          height={192}
+          className="mb-6 h-48 w-48 rounded-3xl border border-base shadow-xl"
+        />
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
