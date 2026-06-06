@@ -86,11 +86,24 @@ export function aggregate(
       return { ...b, cumulativeParticipants: cumulative };
     });
 
+  // EventEntry without the internal memberIds field (same key order as before).
+  const toEntry = (e: Enriched): EventEntry => ({
+    id: e.id,
+    name: e.name,
+    date: e.date,
+    address: e.address,
+    rsvps: e.rsvps,
+    checkIns: e.checkIns,
+    accepted: e.accepted,
+    declined: e.declined,
+    type: e.type,
+  });
+
   // --- Top events by check-ins ---
   const topEvents: EventEntry[] = [...enriched]
     .sort((a, b) => b.checkIns - a.checkIns)
     .slice(0, 12)
-    .map(({ memberIds: _memberIds, ...rest }) => rest);
+    .map(toEntry);
 
   // --- Event types ---
   const typeMap = new Map<string, { type: string; count: number; checkIns: number }>();
@@ -158,8 +171,6 @@ export function aggregate(
   // --- Club info ---
   const club = events[0]?.club ?? {};
 
-  const stripIds = ({ memberIds: _memberIds, ...rest }: Enriched): EventEntry => rest;
-
   return {
     generatedFrom: events.length + " events",
     dataAsOf: opts.dataAsOf,
@@ -178,7 +189,7 @@ export function aggregate(
       firstEventDate: enriched[0]?.date,
       lastEventDate: enriched[enriched.length - 1]?.date,
       biggestEvent: topEvents[0],
-      firstEvent: stripIds(enriched[0]),
+      firstEvent: toEntry(enriched[0]),
     },
     monthly,
     topEvents,

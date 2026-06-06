@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "aggregate": "tsx scripts/aggregate.ts"
+    "aggregate": "tsx scripts/aggregate.ts",
+    "test:redis": "tsx scripts/test-redis.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
