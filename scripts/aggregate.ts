@@ -6,8 +6,8 @@
 import { readFileSync, writeFileSync, mkdirSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { aggregate } from "../src/lib/aggregate";
-import type { RawEvent } from "../src/lib/types";
+import { aggregate } from "../src/domains/stats";
+import type { RawEvent } from "../src/domains/events";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");

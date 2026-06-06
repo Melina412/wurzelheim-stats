@@ -8,7 +8,7 @@ import { EventTypeChart } from "@/components/EventTypeChart";
 import { LoyaltyTiers } from "@/components/LoyaltyTiers";
 import { GithubIcon } from "@/components/GithubIcon";
 import { stats } from "@/data/stats";
-import { fmt, fmtDate, fmtDateLong } from "@/lib/format";
+import { fmt, fmtDate, fmtDateLong } from "@/shared/format";
 
 // Hauptprojekt der Gruppe
 const WURZELHEIM_URL = "https://github.com/ichbinbobby/wurzelheim.de";

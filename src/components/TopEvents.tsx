@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import type { EventEntry } from "@/data/stats";
-import { fmt, fmtDate } from "@/lib/format";
+import { fmt, fmtDate } from "@/shared/format";
 
 type Props = { events: EventEntry[] };
 

@@ -1,9 +1,13 @@
-// Server-only Redis helper. Lives under api/_lib (the `_` prefix keeps Vercel
-// from treating it as an HTTP endpoint). Reads REDIS_URL from the environment —
-// NEVER imported by client code in src/.
+// Club store — the only place that talks to Redis. Read/write the per-club
+// record and the anonymous view counter.
+//
+// SERVER-ONLY: reads REDIS_URL from the environment and uses node-redis (Node
+// built-ins). Only ever imported by api/ handlers — never from client code in
+// src/components or src/pages. (An accidental client import breaks the Vite
+// build loudly, which is the safety net we want.)
 
 import { createClient, type RedisClientType } from "redis";
-import type { ClubRecord } from "../../src/lib/types";
+import type { ClubRecord } from "./club.types";
 
 // node-redis 6 has self-inconsistent generics: createClient() infers a
 // RESP3-specific type, while RedisClientType is the broad default. We pin the

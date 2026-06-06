@@ -9,7 +9,7 @@ import {
   YAxis,
 } from "recharts";
 import type { EventType } from "@/data/stats";
-import { fmt } from "@/lib/format";
+import { fmt } from "@/shared/format";
 
 type Props = { data: EventType[] };
 

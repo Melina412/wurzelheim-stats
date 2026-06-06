@@ -1,12 +1,16 @@
 // Pure aggregation: raw Campfire events -> lean, anonymous stats.
 // No filesystem / network — usable by the build script AND the serverless function.
 
-import type { EventEntry, RawEvent, Stats } from "./types";
+import type { RawEvent } from "../events";
+import type { EventEntry, Stats } from "./stats.types";
 
 // --- Event type categorisation (priority order: most specific first) ---
 const TYPE_RULES: { type: string; re: RegExp }[] = [
   { type: "Community Day", re: /community.?day|communityday|\bcd\b/i },
-  { type: "Max & Dynamax", re: /gigamax|gigadynamax|dynamax|dyna[- ]|max[- ]kampf|max[- ]montag/i },
+  {
+    type: "Max & Dynamax",
+    re: /gigamax|gigadynamax|dynamax|dyna[- ]|max[- ]kampf|max[- ]montag/i,
+  },
   { type: "Raids", re: /raid/i },
   { type: "Tausch", re: /tausch/i },
   { type: "Rampenlicht-Stunde", re: /rampenlicht|spotlight/i },
@@ -29,7 +33,9 @@ export function aggregate(
   // --- Per-event derived numbers ---
   const enriched: Enriched[] = events.map((e) => {
     const members = e.members ?? [];
-    const checkIns = members.filter((m) => m.rsvp_status === "CHECKED_IN").length;
+    const checkIns = members.filter(
+      (m) => m.rsvp_status === "CHECKED_IN",
+    ).length;
     return {
       id: e.id,
       name: e.name,
@@ -45,7 +51,9 @@ export function aggregate(
   });
 
   // sort chronologically
-  enriched.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  enriched.sort(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+  );
 
   // --- Totals ---
   const allRsvps = enriched.reduce((s, e) => s + e.rsvps, 0);
@@ -54,18 +62,31 @@ export function aggregate(
   const totalDeclined = enriched.reduce((s, e) => s + e.declined, 0);
 
   const uniqueParticipants = new Set<string>();
-  for (const e of enriched) for (const id of e.memberIds) uniqueParticipants.add(id);
+  for (const e of enriched)
+    for (const id of e.memberIds) uniqueParticipants.add(id);
 
   // --- Monthly series with cumulative unique participants ---
   const seenIds = new Set<string>();
   const monthlyMap = new Map<
     string,
-    { month: string; events: number; checkIns: number; rsvps: number; newParticipants: number }
+    {
+      month: string;
+      events: number;
+      checkIns: number;
+      rsvps: number;
+      newParticipants: number;
+    }
   >();
   for (const e of enriched) {
     const month = e.date.slice(0, 7);
     if (!monthlyMap.has(month)) {
-      monthlyMap.set(month, { month, events: 0, checkIns: 0, rsvps: 0, newParticipants: 0 });
+      monthlyMap.set(month, {
+        month,
+        events: 0,
+        checkIns: 0,
+        rsvps: 0,
+        newParticipants: 0,
+      });
     }
     const b = monthlyMap.get(month)!;
     b.events += 1;
@@ -106,9 +127,13 @@ export function aggregate(
     .map(toEntry);
 
   // --- Event types ---
-  const typeMap = new Map<string, { type: string; count: number; checkIns: number }>();
+  const typeMap = new Map<
+    string,
+    { type: string; count: number; checkIns: number }
+  >();
   for (const e of enriched) {
-    if (!typeMap.has(e.type)) typeMap.set(e.type, { type: e.type, count: 0, checkIns: 0 });
+    if (!typeMap.has(e.type))
+      typeMap.set(e.type, { type: e.type, count: 0, checkIns: 0 });
     const t = typeMap.get(e.type)!;
     t.count += 1;
     t.checkIns += e.checkIns;
@@ -138,7 +163,13 @@ export function aggregate(
       { label: "Vereinsherz", range: "15–49", lo: 15, hi: 49 },
       { label: "Hardcore-Crew", range: "50–99", lo: 50, hi: 99 },
       { label: "Die Legenden", range: "100+", lo: 100, hi: Infinity },
-    ] as { label: string; range: string; lo: number; hi: number; casual?: boolean }[]
+    ] as {
+      label: string;
+      range: string;
+      lo: number;
+      hi: number;
+      casual?: boolean;
+    }[]
   ).map((t) => ({
     label: t.label,
     range: t.range,
@@ -152,21 +183,33 @@ export function aggregate(
     activeThreshold: ACTIVE_THRESHOLD,
     activeMembers: activeCounts.length,
     medianActive: activeCounts[Math.floor(activeCounts.length / 2)] ?? 0,
-    avgActive: +(activeCounts.reduce((s, n) => s + n, 0) / (activeCounts.length || 1)).toFixed(1),
+    avgActive: +(
+      activeCounts.reduce((s, n) => s + n, 0) / (activeCounts.length || 1)
+    ).toFixed(1),
     tiers: TIERS,
-    elite: { atLeast50: atLeast(50), atLeast100: atLeast(100), atLeast150: atLeast(150) },
+    elite: {
+      atLeast50: atLeast(50),
+      atLeast100: atLeast(100),
+      atLeast150: atLeast(150),
+    },
   };
 
   // --- Top locations ---
-  const locMap = new Map<string, { address: string; count: number; checkIns: number }>();
+  const locMap = new Map<
+    string,
+    { address: string; count: number; checkIns: number }
+  >();
   for (const e of enriched) {
     if (!e.address) continue;
-    if (!locMap.has(e.address)) locMap.set(e.address, { address: e.address, count: 0, checkIns: 0 });
+    if (!locMap.has(e.address))
+      locMap.set(e.address, { address: e.address, count: 0, checkIns: 0 });
     const l = locMap.get(e.address)!;
     l.count += 1;
     l.checkIns += e.checkIns;
   }
-  const topLocations = [...locMap.values()].sort((a, b) => b.count - a.count).slice(0, 10);
+  const topLocations = [...locMap.values()]
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 10);
 
   // --- Club info ---
   const club = events[0]?.club ?? {};

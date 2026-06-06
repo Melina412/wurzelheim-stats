@@ -7,7 +7,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { fmt, fmtMonth } from "@/lib/format";
+import { fmt, fmtMonth } from "@/shared/format";
 import type { Monthly } from "@/data/stats";
 
 type Props = { data: Monthly[] };

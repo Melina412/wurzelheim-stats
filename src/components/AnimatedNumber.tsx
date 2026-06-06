@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { animate, useInView } from "framer-motion";
-import { fmt } from "@/lib/format";
+import { fmt } from "@/shared/format";
 
 type Props = {
   value: number;

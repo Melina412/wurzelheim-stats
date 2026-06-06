@@ -1,22 +1,5 @@
-// Shared types for the aggregation pipeline (used by the build script, the
-// serverless function, and the frontend).
+// Stats domain — the aggregated, anonymous output shape.
 
-// --- Raw input (shape of the cmpf-tools API) — only the fields we use ---
-export type RawMember = {
-  id: string;
-  rsvp_status: "ACCEPTED" | "CHECKED_IN" | "DECLINED" | "PENDING" | string;
-};
-
-export type RawEvent = {
-  id: string;
-  name: string;
-  address?: string;
-  time: string;
-  members?: RawMember[];
-  club?: { name?: string };
-};
-
-// --- Aggregated output ---
 export type Monthly = {
   month: string;
   events: number;
@@ -62,16 +45,6 @@ export type Loyalty = {
   avgActive: number;
   tiers: LoyaltyTier[];
   elite: { atLeast50: number; atLeast100: number; atLeast150: number };
-};
-
-export type ColorScheme = "green" | "blue" | "red" | "amber" | "purple";
-
-// What we store per club in Redis (anonymous — stats contain no usernames).
-export type ClubRecord = {
-  displayName: string;
-  colorScheme: ColorScheme;
-  stats: Stats;
-  generatedAt: string; // ISO timestamp of last aggregation
 };
 
 export type Stats = {

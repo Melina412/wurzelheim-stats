@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import type { Loyalty } from "@/data/stats";
-import { fmt } from "@/lib/format";
+import { fmt } from "@/shared/format";
 
 type Props = { loyalty: Loyalty };
 

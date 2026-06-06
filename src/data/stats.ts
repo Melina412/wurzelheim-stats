@@ -1,5 +1,5 @@
 import raw from "./stats.json";
-import type { Stats } from "@/lib/types";
+import type { Stats } from "@/domains/stats";
 
 // Re-export the types so existing imports (`@/data/stats`) keep working.
 export type {
@@ -10,6 +10,6 @@ export type {
   LoyaltyTier,
   Loyalty,
   Stats,
-} from "@/lib/types";
+} from "@/domains/stats";
 
 export const stats = raw as Stats;

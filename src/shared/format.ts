@@ -3,8 +3,18 @@ const deNum = new Intl.NumberFormat("de-DE");
 export const fmt = (n: number) => deNum.format(n);
 
 const MONTHS_DE = [
-  "Jan", "Feb", "Mär", "Apr", "Mai", "Jun",
-  "Jul", "Aug", "Sep", "Okt", "Nov", "Dez",
+  "Jan",
+  "Feb",
+  "Mär",
+  "Apr",
+  "Mai",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Okt",
+  "Nov",
+  "Dez",
 ];
 
 /** "2025-03" -> "Mär 25" */
@@ -20,8 +30,18 @@ export function fmtDate(iso: string): string {
 }
 
 const MONTHS_DE_LONG = [
-  "Januar", "Februar", "März", "April", "Mai", "Juni",
-  "Juli", "August", "September", "Oktober", "November", "Dezember",
+  "Januar",
+  "Februar",
+  "März",
+  "April",
+  "Mai",
+  "Juni",
+  "Juli",
+  "August",
+  "September",
+  "Oktober",
+  "November",
+  "Dezember",
 ];
 
 /** "2026-05-31" -> "31. Mai 2026" */

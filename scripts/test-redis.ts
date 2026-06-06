@@ -3,8 +3,9 @@
 // view counter, then deletes the test keys. Proves connectivity + read/write.
 
 import { readFileSync } from "node:fs";
-import { getRedis, setClub, getClub, incrViews } from "../api/_lib/redis";
-import type { ClubRecord, Stats } from "../src/lib/types";
+import { getRedis, setClub, getClub, incrViews } from "../src/domains/club";
+import type { ClubRecord } from "../src/domains/club";
+import type { Stats } from "../src/domains/stats";
 
 // Load local secrets (.env.local). Node 22+ built-in; ignore if absent.
 try {
