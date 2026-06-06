@@ -4,3 +4,4 @@
 // Client code should only `import type { ... }` from here.
 export * from "./club.types";
 export * from "./club.store";
+export * from "./club.service";

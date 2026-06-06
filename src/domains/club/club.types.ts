@@ -2,7 +2,14 @@
 
 import type { Stats } from "../stats";
 
-export type ColorScheme = "green" | "blue" | "red" | "amber" | "purple";
+export const COLOR_SCHEMES = [
+  "green",
+  "blue",
+  "red",
+  "amber",
+  "purple",
+] as const;
+export type ColorScheme = (typeof COLOR_SCHEMES)[number];
 
 // What we store per club in Redis (anonymous — stats contain no usernames).
 export type ClubRecord = {
