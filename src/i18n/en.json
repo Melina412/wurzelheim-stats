@@ -19,5 +19,34 @@
   },
   "landing": {
     "membersLabel": "Members"
+  },
+  "sections": {
+    "cards": {
+      "events": "Events organized",
+      "participants": "Unique participants",
+      "checkins": "Total check-ins",
+      "checkinRate": "Check-in rate"
+    },
+    "growthTitle": "From the first meetup to a movement",
+    "growthDesc": "At the very first event {firstName} on {firstDate}, {firstCount} people showed up. At the biggest event so far, {bigName}, there were {bigCount}.",
+    "topEventsTitle": "The biggest days 🏆",
+    "topEventsDesc": "These events brought the most trainers together on site.",
+    "eventTypesTitle": "What we meet up for",
+    "eventTypesDesc": "{type} are by far the most common activity, with {count} events.",
+    "loyaltyTitle": "The heart of the community ❤️",
+    "loyaltyDesc": "Of {everCheckedIn} trainers who ever checked in, {activeMembers} are true regulars ({threshold}+ events). And at the very top it gets exclusive: just {atLeast100} attended more than 100 events — only {atLeast150} of them even 150+.",
+    "loyaltyDisclaimer": "Anonymous analysis of event check-ins — no names. Organizers & ambassadors are naturally at the top."
+  },
+  "meta": {
+    "eventsSince": "{events} events · since {since}",
+    "dataAsOf": "Data as of: {date}"
+  },
+  "clubStats": {
+    "title": "Club statistics",
+    "comingSoon": "Coming soon: stats for club {id}"
+  },
+  "generate": {
+    "title": "Generate stats for your community",
+    "comingSoon": "Coming soon: the generate wizard."
   }
 }

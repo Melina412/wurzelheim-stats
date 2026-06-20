@@ -19,5 +19,34 @@
   },
   "landing": {
     "membersLabel": "Mitglieder"
+  },
+  "sections": {
+    "cards": {
+      "events": "Events organisiert",
+      "participants": "Einzigartige Teilnehmer",
+      "checkins": "Check-ins gesamt",
+      "checkinRate": "Check-in-Quote"
+    },
+    "growthTitle": "Vom ersten Treffen zur Bewegung",
+    "growthDesc": "Beim allerersten Event {firstName} am {firstDate} kamen {firstCount} Leute. Beim größten Event bisher, {bigName}, waren es {bigCount}.",
+    "topEventsTitle": "Die größten Tage 🏆",
+    "topEventsDesc": "Diese Events haben die meisten Trainer:innen vor Ort versammelt.",
+    "eventTypesTitle": "Wofür wir uns treffen",
+    "eventTypesDesc": "{type} sind mit {count} Events klar die häufigste Aktivität.",
+    "loyaltyTitle": "Das Herz der Community ❤️",
+    "loyaltyDesc": "Von {everCheckedIn} Trainer:innen, die je eingecheckt haben, sind {activeMembers} echte Stammgäste (ab {threshold} Events). Und ganz oben wird's exklusiv: gerade mal {atLeast100} waren bei über 100 Events dabei — nur {atLeast150} davon sogar 150+.",
+    "loyaltyDisclaimer": "Anonyme Auswertung der Event-Check-ins — ohne Namen. Organisator:innen & Ambassadoren liegen naturgemäß ganz oben."
+  },
+  "meta": {
+    "eventsSince": "{events} Events · seit {since}",
+    "dataAsOf": "Stand der Daten: {date}"
+  },
+  "clubStats": {
+    "title": "Club-Statistiken",
+    "comingSoon": "Bald hier: Stats für Club {id}"
+  },
+  "generate": {
+    "title": "Stats für deine Community generieren",
+    "comingSoon": "Bald hier: der Generate-Wizard."
   }
 }
