@@ -1,9 +1,9 @@
-// Smoke test for the Redis helper. Run: npm run test:redis
+// Smoke test for the Upstash Redis store. Run: npm run test:redis
 // Loads .env.local, writes a throwaway club record, reads it back, bumps the
 // view counter, then deletes the test keys. Proves connectivity + read/write.
 
 import { readFileSync } from "node:fs";
-import { getRedis, setClub, getClub, incrViews } from "../src/domains/club";
+import { setClub, getClub, incrViews, clearClub } from "../src/domains/club";
 import type { ClubRecord } from "../src/domains/club";
 import type { Stats } from "../src/domains/stats";
 
@@ -11,13 +11,15 @@ import type { Stats } from "../src/domains/stats";
 try {
   process.loadEnvFile(".env.local");
 } catch {
-  /* REDIS_URL may already be in the environment */
+  /* env may already be set */
 }
 
 const TEST_ID = "__smoketest__";
 
 async function main() {
-  const stats = JSON.parse(readFileSync("src/data/stats.json", "utf8")) as Stats;
+  const stats = JSON.parse(
+    readFileSync("src/data/stats.json", "utf8"),
+  ) as Stats;
   const record: ClubRecord = {
     displayName: "Smoke Test (delete me)",
     colorScheme: "green",
@@ -42,13 +44,9 @@ async function main() {
   const views = await incrViews(TEST_ID);
   console.log(`   views = ${views}`);
 
-  const r = await getRedis();
-  await r.del(`club:${TEST_ID}`);
-  await r.del(`views:${TEST_ID}`);
+  await clearClub(TEST_ID);
   console.log("→ Testschlüssel gelöscht 🧹");
-
-  await r.quit();
-  console.log("✅ Redis-Connect + Schreiben/Lesen/Counter funktionieren.");
+  console.log("✅ Upstash Connect + Schreiben/Lesen/Counter funktionieren.");
 }
 
 main().catch((err) => {
