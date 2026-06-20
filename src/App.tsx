@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { CalendarDays, TrendingUp, Trophy, Users } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { LanguageToggle } from "@/components/LanguageToggle";
 import { AnimatedNumber } from "@/components/AnimatedNumber";
 import { GrowthChart } from "@/components/GrowthChart";
 import { TopEvents } from "@/components/TopEvents";
@@ -73,6 +74,7 @@ export default function App() {
   return (
     <div className="relative overflow-hidden">
       <ThemeToggle />
+      <LanguageToggle />
 
       {/* ambient glow */}
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-150 bg-[radial-gradient(60%_60%_at_50%_0%,var(--color-go-green)_0%,transparent_70%)] opacity-20" />

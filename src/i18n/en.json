@@ -1,0 +1,23 @@
+{
+  "common": {
+    "toggleTheme": "Toggle theme",
+    "toggleLanguage": "Switch language",
+    "loading": "Loading…",
+    "retry": "Try again"
+  },
+  "errors": {
+    "method_not_allowed": "Method not allowed.",
+    "unauthorized": "Wrong password.",
+    "server_misconfigured": "The server is not configured correctly.",
+    "invalid_input": "Invalid input.",
+    "invalid_color": "Invalid color scheme.",
+    "rate_limited": "This club was just updated — please try again later.",
+    "no_events": "No club with events found for this link/ID.",
+    "club_not_generated": "No statistics have been generated for this club yet.",
+    "upstream_error": "The data source is currently unavailable.",
+    "server_error": "Something went wrong. Please try again later."
+  },
+  "landing": {
+    "membersLabel": "Members"
+  }
+}

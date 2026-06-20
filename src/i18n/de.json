@@ -1,0 +1,23 @@
+{
+  "common": {
+    "toggleTheme": "Theme wechseln",
+    "toggleLanguage": "Sprache wechseln",
+    "loading": "Lädt…",
+    "retry": "Erneut versuchen"
+  },
+  "errors": {
+    "method_not_allowed": "Methode nicht erlaubt.",
+    "unauthorized": "Falsches Passwort.",
+    "server_misconfigured": "Server ist nicht korrekt konfiguriert.",
+    "invalid_input": "Ungültige Eingabe.",
+    "invalid_color": "Ungültiges Farbschema.",
+    "rate_limited": "Dieser Club wurde gerade erst aktualisiert — bitte später erneut versuchen.",
+    "no_events": "Für diesen Link/diese ID wurde kein Club mit Events gefunden.",
+    "club_not_generated": "Für diesen Club wurden noch keine Statistiken erstellt.",
+    "upstream_error": "Die Datenquelle ist gerade nicht erreichbar.",
+    "server_error": "Etwas ist schiefgelaufen. Bitte später erneut versuchen."
+  },
+  "landing": {
+    "membersLabel": "Mitglieder"
+  }
+}
