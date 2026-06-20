@@ -9,6 +9,25 @@ export type Monthly = {
   cumulativeParticipants: number;
 };
 
+// `type` is a stable i18n key (e.g. "raids", "communityDay") — translated in the UI.
+export type EventTypeKey =
+  | "communityDay"
+  | "maxDynamax"
+  | "raids"
+  | "trade"
+  | "spotlight"
+  | "research"
+  | "goFestTour"
+  | "wildArea"
+  | "other";
+
+export type EventType = {
+  type: EventTypeKey;
+  count: number;
+  checkIns: number;
+  avgCheckIns: number;
+};
+
 export type EventEntry = {
   id: string;
   name: string;
@@ -18,20 +37,22 @@ export type EventEntry = {
   checkIns: number;
   accepted: number;
   declined: number;
-  type: string;
-};
-
-export type EventType = {
-  type: string;
-  count: number;
-  checkIns: number;
-  avgCheckIns: number;
+  type: EventTypeKey;
 };
 
 export type Location = { address: string; count: number; checkIns: number };
 
+// `key` is a stable i18n key (translated in the UI).
+export type LoyaltyTierKey =
+  | "intro"
+  | "casual"
+  | "regular"
+  | "core"
+  | "hardcore"
+  | "legend";
+
 export type LoyaltyTier = {
-  label: string;
+  key: LoyaltyTierKey;
   range: string;
   casual: boolean;
   people: number;

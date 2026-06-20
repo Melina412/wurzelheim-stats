@@ -21,7 +21,8 @@ export function SiteFooter() {
           className="font-medium text-base-fg transition hover:text-go-green"
         >
           Melina412
-        </a>
+        </a>{" "}
+        aka Melicyclonit
       </p>
       <div className="flex flex-wrap items-center justify-center gap-3">
         <a

@@ -2,26 +2,32 @@
 // No filesystem / network — usable by the build script AND the serverless function.
 
 import type { RawEvent } from "../events";
-import type { EventEntry, Stats } from "./stats.types";
+import type {
+  EventEntry,
+  EventTypeKey,
+  LoyaltyTierKey,
+  Stats,
+} from "./stats.types";
 
 // --- Event type categorisation (priority order: most specific first) ---
-const TYPE_RULES: { type: string; re: RegExp }[] = [
-  { type: "Community Day", re: /community.?day|communityday|\bcd\b/i },
+// `type` is a stable i18n key — the UI translates it (de.json/en.json → eventTypes.*).
+const TYPE_RULES: { type: EventTypeKey; re: RegExp }[] = [
+  { type: "communityDay", re: /community.?day|communityday|\bcd\b/i },
   {
-    type: "Max & Dynamax",
+    type: "maxDynamax",
     re: /gigamax|gigadynamax|dynamax|dyna[- ]|max[- ]kampf|max[- ]montag/i,
   },
-  { type: "Raids", re: /raid/i },
-  { type: "Tausch", re: /tausch/i },
-  { type: "Rampenlicht-Stunde", re: /rampenlicht|spotlight/i },
-  { type: "Forschung & Schlüpftag", re: /forschung|schlüpftag|hatch/i },
-  { type: "GO Fest & Tour", re: /go.?fest|gofest|go.?tour/i },
-  { type: "Naturzone", re: /naturzone/i },
+  { type: "raids", re: /raid/i },
+  { type: "trade", re: /tausch/i },
+  { type: "spotlight", re: /rampenlicht|spotlight/i },
+  { type: "research", re: /forschung|schlüpftag|hatch/i },
+  { type: "goFestTour", re: /go.?fest|gofest|go.?tour/i },
+  { type: "wildArea", re: /naturzone/i },
 ];
 
-function classify(name: string): string {
+function classify(name: string): EventTypeKey {
   for (const rule of TYPE_RULES) if (rule.re.test(name)) return rule.type;
-  return "Sonstiges";
+  return "other";
 }
 
 type Enriched = EventEntry & { memberIds: string[] };
@@ -128,8 +134,8 @@ export function aggregate(
 
   // --- Event types ---
   const typeMap = new Map<
-    string,
-    { type: string; count: number; checkIns: number }
+    EventTypeKey,
+    { type: EventTypeKey; count: number; checkIns: number }
   >();
   for (const e of enriched) {
     if (!typeMap.has(e.type))
@@ -157,21 +163,21 @@ export function aggregate(
 
   const TIERS = (
     [
-      { label: "Reingeschnuppert", range: "1", lo: 1, hi: 1, casual: true },
-      { label: "Gelegenheits-Gäste", range: "2–4", lo: 2, hi: 4, casual: true },
-      { label: "Stammtrainer:innen", range: "5–14", lo: 5, hi: 14 },
-      { label: "Vereinsherz", range: "15–49", lo: 15, hi: 49 },
-      { label: "Hardcore-Crew", range: "50–99", lo: 50, hi: 99 },
-      { label: "Die Legenden", range: "100+", lo: 100, hi: Infinity },
+      { key: "intro", range: "1", lo: 1, hi: 1, casual: true },
+      { key: "casual", range: "2–4", lo: 2, hi: 4, casual: true },
+      { key: "regular", range: "5–14", lo: 5, hi: 14 },
+      { key: "core", range: "15–49", lo: 15, hi: 49 },
+      { key: "hardcore", range: "50–99", lo: 50, hi: 99 },
+      { key: "legend", range: "100+", lo: 100, hi: Infinity },
     ] as {
-      label: string;
+      key: LoyaltyTierKey;
       range: string;
       lo: number;
       hi: number;
       casual?: boolean;
     }[]
   ).map((t) => ({
-    label: t.label,
+    key: t.key,
     range: t.range,
     casual: !!t.casual,
     people: visitCounts.filter((c) => c >= t.lo && c <= t.hi).length,

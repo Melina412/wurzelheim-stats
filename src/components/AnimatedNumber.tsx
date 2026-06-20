@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { animate, useInView } from "framer-motion";
-import { fmt } from "@/shared/format";
+import { useFormat } from "@/i18n/context";
 
 type Props = {
   value: number;
@@ -12,6 +12,7 @@ export function AnimatedNumber({ value, duration = 2, className }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
   const [display, setDisplay] = useState(0);
+  const { fmt } = useFormat();
 
   useEffect(() => {
     if (!inView) return;

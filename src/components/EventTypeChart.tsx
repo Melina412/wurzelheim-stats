@@ -8,8 +8,8 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import type { EventType } from "@/data/stats";
-import { fmt } from "@/shared/format";
+import type { EventType, EventTypeKey } from "@/data/stats";
+import { useT, useFormat } from "@/i18n/context";
 
 type Props = { data: EventType[] };
 
@@ -26,9 +26,14 @@ const COLORS = [
 ];
 
 export function EventTypeChart({ data }: Props) {
+  const t = useT();
+  const { fmt } = useFormat();
   const sorted = [...data].sort((a, b) => b.count - a.count);
   return (
-    <ResponsiveContainer width="100%" height={Math.max(260, sorted.length * 42)}>
+    <ResponsiveContainer
+      width="100%"
+      height={Math.max(260, sorted.length * 42)}
+    >
       <BarChart
         layout="vertical"
         data={sorted}
@@ -43,6 +48,7 @@ export function EventTypeChart({ data }: Props) {
           fontSize={12}
           tickLine={false}
           axisLine={false}
+          tickFormatter={(v) => t(`eventTypes.${v as EventTypeKey}`)}
         />
         <Tooltip
           cursor={{ fill: "var(--color-go-green)", fillOpacity: 0.06 }}
@@ -51,11 +57,18 @@ export function EventTypeChart({ data }: Props) {
             const d = payload[0].payload as EventType;
             return (
               <div className="rounded-xl border border-base bg-elevated px-4 py-3 text-sm shadow-xl">
-                <p className="font-semibold text-base-fg">{d.type}</p>
-                <p className="text-muted">
-                  {d.count} Events · Ø {fmt(d.avgCheckIns)} Check-ins
+                <p className="font-semibold text-base-fg">
+                  {t(`eventTypes.${d.type}`)}
                 </p>
-                <p className="text-go-green">{fmt(d.checkIns)} Check-ins gesamt</p>
+                <p className="text-muted">
+                  {t("charts.eventTypeTooltip", {
+                    count: d.count,
+                    avg: fmt(d.avgCheckIns),
+                  })}
+                </p>
+                <p className="text-go-green">
+                  {t("charts.checkinsTotal", { count: fmt(d.checkIns) })}
+                </p>
               </div>
             );
           }}

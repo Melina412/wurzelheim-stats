@@ -1,4 +1,3 @@
-import { Fragment, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { CalendarDays, TrendingUp, Trophy, Users } from "lucide-react";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -7,27 +6,21 @@ import { GrowthChart } from "@/components/GrowthChart";
 import { TopEvents } from "@/components/TopEvents";
 import { EventTypeChart } from "@/components/EventTypeChart";
 import { LoyaltyTiers } from "@/components/LoyaltyTiers";
-import { useT } from "@/i18n/context";
-import { fmt, fmtDate } from "@/shared/format";
+import { useT, useFormat } from "@/i18n/context";
+import { rich } from "@/shared/rich";
 import type { Stats } from "@/domains/stats";
-
-/** Render a template with `{token}` placeholders, swapping each for a styled node. */
-function rich(template: string, values: Record<string, ReactNode>): ReactNode {
-  return template.split(/(\{[^}]+\})/).map((part, i) => {
-    const m = /^\{([^}]+)\}$/.exec(part);
-    return (
-      <Fragment key={i}>{m && m[1] in values ? values[m[1]] : part}</Fragment>
-    );
-  });
-}
 
 const quoted = (s: string) => (
   <span className="font-medium text-base-fg">„{s}"</span>
 );
 
+// Capitalise the first letter (the event-type name starts the sentence).
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
 /** Data-driven stats sections — shared by the Wurzelheim landing and /club/:id. */
 export function StatsSections({ stats }: { stats: Stats }) {
   const t = useT();
+  const { fmt, fmtDate } = useFormat();
   const { totals, monthly, eventTypes, loyalty } = stats;
 
   return (
@@ -106,7 +99,7 @@ export function StatsSections({ stats }: { stats: Stats }) {
           {rich(t("sections.eventTypesDesc"), {
             type: (
               <span className="font-bold text-base-fg">
-                {eventTypes[0].type}
+                {cap(t(`eventTypes.${eventTypes[0].type}`))}
               </span>
             ),
             count: (

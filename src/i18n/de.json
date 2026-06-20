@@ -18,7 +18,10 @@
     "server_error": "Etwas ist schiefgelaufen. Bitte später erneut versuchen."
   },
   "landing": {
-    "membersLabel": "Mitglieder"
+    "membersLabel": "Mitglieder",
+    "heroYears": "unter 2 Jahren",
+    "heroSubtitle": "In {years} von einer Handvoll Trainer:innen am Alexanderplatz zu einer der größten Communities in Berlin.",
+    "thanks": "Ein riesiges Dankeschön an {bobby} und {ute} — und an alle, die diese Community mit Herzblut am Leben halten. Ohne euch wären das hier nur Zahlen. 🫶"
   },
   "sections": {
     "cards": {
@@ -40,6 +43,32 @@
   "meta": {
     "eventsSince": "{events} Events · seit {since}",
     "dataAsOf": "Stand der Daten: {date}"
+  },
+  "tiers": {
+    "intro": "Reingeschnuppert",
+    "casual": "Gelegenheits-Gäste",
+    "regular": "Stammtrainer:innen",
+    "core": "Vereinsherz",
+    "hardcore": "Hardcore-Crew",
+    "legend": "Die Legenden"
+  },
+  "eventTypes": {
+    "raids": "Raids",
+    "maxDynamax": "Max & Dynamax",
+    "communityDay": "Community Day",
+    "trade": "Tausch",
+    "spotlight": "Rampenlicht-Stunde",
+    "research": "Forschung & Schlüpftag",
+    "goFestTour": "GO Fest & Tour",
+    "wildArea": "Naturzone",
+    "other": "Sonstiges"
+  },
+  "charts": {
+    "checkins": "Check-ins",
+    "checkinsTotal": "{count} Check-ins gesamt",
+    "eventTypeTooltip": "{count} Events · Ø {avg} Check-ins",
+    "participantsTotal": "{count} Teilnehmer gesamt",
+    "growthTooltipSub": "+{new} neu · {events} Events"
   },
   "clubStats": {
     "title": "Club-Statistiken",

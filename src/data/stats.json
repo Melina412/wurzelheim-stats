@@ -24,7 +24,7 @@
       "checkIns": 426,
       "accepted": 232,
       "declined": 14,
-      "type": "Raids"
+      "type": "raids"
     },
     "firstEvent": {
       "id": "4b477c26-90fc-4d0f-942b-14474681c0c3",
@@ -35,7 +35,7 @@
       "checkIns": 6,
       "accepted": 1,
       "declined": 1,
-      "type": "Raids"
+      "type": "raids"
     }
   },
   "monthly": [
@@ -242,7 +242,7 @@
       "checkIns": 426,
       "accepted": 232,
       "declined": 14,
-      "type": "Raids"
+      "type": "raids"
     },
     {
       "id": "bd65a1fd-7f86-4854-bf51-c546701e0928",
@@ -253,7 +253,7 @@
       "checkIns": 319,
       "accepted": 76,
       "declined": 7,
-      "type": "Max & Dynamax"
+      "type": "maxDynamax"
     },
     {
       "id": "b1da1c11-f7cc-42bc-b5fd-dfe1e965eae4",
@@ -264,7 +264,7 @@
       "checkIns": 314,
       "accepted": 56,
       "declined": 6,
-      "type": "Sonstiges"
+      "type": "other"
     },
     {
       "id": "d93846f7-9f0b-4d53-b649-bd6e51a7c415",
@@ -275,7 +275,7 @@
       "checkIns": 277,
       "accepted": 79,
       "declined": 7,
-      "type": "Raids"
+      "type": "raids"
     },
     {
       "id": "8b1abf04-d5b4-4a98-a9d1-287c5f385dec",
@@ -286,7 +286,7 @@
       "checkIns": 271,
       "accepted": 68,
       "declined": 7,
-      "type": "Max & Dynamax"
+      "type": "maxDynamax"
     },
     {
       "id": "3fcffd13-a613-4e66-8f61-1c8b9dd9dd51",
@@ -297,7 +297,7 @@
       "checkIns": 258,
       "accepted": 44,
       "declined": 5,
-      "type": "Raids"
+      "type": "raids"
     },
     {
       "id": "c2474c04-66d6-48d0-9260-7d8bf54763ac",
@@ -308,7 +308,7 @@
       "checkIns": 252,
       "accepted": 60,
       "declined": 7,
-      "type": "GO Fest & Tour"
+      "type": "goFestTour"
     },
     {
       "id": "113333da-dd62-49d7-826f-baf58ff599a3",
@@ -319,7 +319,7 @@
       "checkIns": 250,
       "accepted": 86,
       "declined": 6,
-      "type": "Max & Dynamax"
+      "type": "maxDynamax"
     },
     {
       "id": "6768ed4a-4888-4a3f-b204-77987de05697",
@@ -330,7 +330,7 @@
       "checkIns": 250,
       "accepted": 52,
       "declined": 6,
-      "type": "Max & Dynamax"
+      "type": "maxDynamax"
     },
     {
       "id": "7349c1c2-978c-4d88-93bf-84805066a8b9",
@@ -341,7 +341,7 @@
       "checkIns": 241,
       "accepted": 63,
       "declined": 8,
-      "type": "GO Fest & Tour"
+      "type": "goFestTour"
     },
     {
       "id": "886ae707-e4a2-4cfd-8e94-3ead5b6819a0",
@@ -352,7 +352,7 @@
       "checkIns": 220,
       "accepted": 49,
       "declined": 9,
-      "type": "Max & Dynamax"
+      "type": "maxDynamax"
     },
     {
       "id": "c7ee504c-db65-474b-b549-5a03fe648424",
@@ -363,60 +363,60 @@
       "checkIns": 218,
       "accepted": 29,
       "declined": 6,
-      "type": "Max & Dynamax"
+      "type": "maxDynamax"
     }
   ],
   "eventTypes": [
     {
-      "type": "Raids",
+      "type": "raids",
       "count": 147,
       "checkIns": 11125,
       "avgCheckIns": 76
     },
     {
-      "type": "Max & Dynamax",
+      "type": "maxDynamax",
       "count": 54,
       "checkIns": 5397,
       "avgCheckIns": 100
     },
     {
-      "type": "Community Day",
+      "type": "communityDay",
       "count": 29,
       "checkIns": 2063,
       "avgCheckIns": 71
     },
     {
-      "type": "Sonstiges",
+      "type": "other",
       "count": 18,
       "checkIns": 1441,
       "avgCheckIns": 80
     },
     {
-      "type": "Tausch",
+      "type": "trade",
       "count": 12,
       "checkIns": 183,
       "avgCheckIns": 15
     },
     {
-      "type": "Rampenlicht-Stunde",
+      "type": "spotlight",
       "count": 11,
       "checkIns": 198,
       "avgCheckIns": 18
     },
     {
-      "type": "GO Fest & Tour",
+      "type": "goFestTour",
       "count": 8,
       "checkIns": 1186,
       "avgCheckIns": 148
     },
     {
-      "type": "Naturzone",
+      "type": "wildArea",
       "count": 6,
       "checkIns": 680,
       "avgCheckIns": 113
     },
     {
-      "type": "Forschung & Schlüpftag",
+      "type": "research",
       "count": 5,
       "checkIns": 289,
       "avgCheckIns": 58
@@ -430,37 +430,37 @@
     "avgActive": 22.9,
     "tiers": [
       {
-        "label": "Reingeschnuppert",
+        "key": "intro",
         "range": "1",
         "casual": true,
         "people": 1245
       },
       {
-        "label": "Gelegenheits-Gäste",
+        "key": "casual",
         "range": "2–4",
         "casual": true,
         "people": 669
       },
       {
-        "label": "Stammtrainer:innen",
+        "key": "regular",
         "range": "5–14",
         "casual": false,
         "people": 511
       },
       {
-        "label": "Vereinsherz",
+        "key": "core",
         "range": "15–49",
         "casual": false,
         "people": 248
       },
       {
-        "label": "Hardcore-Crew",
+        "key": "hardcore",
         "range": "50–99",
         "casual": false,
         "people": 61
       },
       {
-        "label": "Die Legenden",
+        "key": "legend",
         "range": "100+",
         "casual": false,
         "people": 34

@@ -3,12 +3,14 @@ import { AnimatedNumber } from "@/components/AnimatedNumber";
 import { StatsSections } from "@/components/StatsSections";
 import { StatsMeta } from "@/components/StatsMeta";
 import { stats } from "@/data/stats";
+import { useT } from "@/i18n/context";
+import { rich } from "@/shared/rich";
 
-// NOTE: hero + thanks are Wurzelheim-specific and still hardcoded German — they
-// get converted to i18n keys in the landing-restructure step. The shared,
-// data-driven sections live in <StatsSections />.
+// Hero + thanks are Wurzelheim-specific (club name, the 5000 milestone, the
+// names) but the copy is translated; the shared sections live in <StatsSections />.
 export function Landing() {
   const { club } = stats;
+  const t = useT();
 
   return (
     <div className="relative overflow-hidden">
@@ -44,7 +46,7 @@ export function Landing() {
           transition={{ delay: 0.4 }}
           className="mt-3 text-base font-semibold uppercase tracking-[0.2em] text-go-green sm:text-lg"
         >
-          Mitglieder
+          {t("landing.membersLabel")}
         </motion.p>
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -52,9 +54,13 @@ export function Landing() {
           transition={{ delay: 0.55 }}
           className="mt-5 max-w-xl text-lg text-muted sm:text-xl"
         >
-          In <span className="font-semibold text-base-fg">unter 2 Jahren</span>{" "}
-          von einer Handvoll Trainer:innen am Alexanderplatz zu einer der
-          größten Communities in Berlin.
+          {rich(t("landing.heroSubtitle"), {
+            years: (
+              <span className="font-semibold text-base-fg">
+                {t("landing.heroYears")}
+              </span>
+            ),
+          })}
         </motion.p>
       </header>
 
@@ -69,11 +75,10 @@ export function Landing() {
           viewport={{ once: true, margin: "-60px" }}
           className="text-lg text-muted sm:text-xl"
         >
-          Ein riesiges Dankeschön an{" "}
-          <span className="font-bold text-go-green">Bobby</span> und{" "}
-          <span className="font-bold text-go-green">Ute</span> — und an alle,
-          die diese Community mit Herzblut am Leben halten. Ohne euch wären das
-          hier nur Zahlen. 🫶
+          {rich(t("landing.thanks"), {
+            bobby: <span className="font-bold text-go-green">Bobby</span>,
+            ute: <span className="font-bold text-go-green">Ute</span>,
+          })}
         </motion.p>
       </section>
 

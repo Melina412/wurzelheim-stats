@@ -6,8 +6,10 @@ export type {
   Monthly,
   EventEntry,
   EventType,
+  EventTypeKey,
   Location,
   LoyaltyTier,
+  LoyaltyTierKey,
   Loyalty,
   Stats,
 } from "@/domains/stats";

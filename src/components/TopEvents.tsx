@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import type { EventEntry } from "@/data/stats";
-import { fmt, fmtDate } from "@/shared/format";
+import { useT, useFormat } from "@/i18n/context";
 
 type Props = { events: EventEntry[] };
 
 const MEDAL = ["text-go-yellow", "text-slate-400", "text-amber-600"];
 
 export function TopEvents({ events }: Props) {
+  const t = useT();
+  const { fmt, fmtDate } = useFormat();
   const max = events[0]?.checkIns || 1;
   const top = events.slice(0, 8);
 
@@ -37,13 +39,15 @@ export function TopEvents({ events }: Props) {
             <div className="min-w-0 flex-1">
               <p className="truncate font-semibold text-base-fg">{e.name}</p>
               <p className="text-xs text-muted">
-                {fmtDate(e.date)} · {e.type}
+                {fmtDate(e.date)} · {t(`eventTypes.${e.type}`)}
               </p>
             </div>
             <div className="shrink-0 text-right">
-              <p className="text-lg font-bold text-go-green">{fmt(e.checkIns)}</p>
+              <p className="text-lg font-bold text-go-green">
+                {fmt(e.checkIns)}
+              </p>
               <p className="text-[11px] uppercase tracking-wide text-muted">
-                Check-ins
+                {t("charts.checkins")}
               </p>
             </div>
           </div>

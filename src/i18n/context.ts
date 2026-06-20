@@ -1,5 +1,6 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useMemo } from "react";
 import type { ApiErrorCode } from "../shared/api-errors";
+import { makeFormatters } from "../shared/format";
 import de from "./de.json";
 import en from "./en.json";
 
@@ -61,4 +62,10 @@ export function useT(): TFunc {
 export function useLang() {
   const { lang, setLang } = useContext(LangContext);
   return { lang, setLang };
+}
+
+/** Locale-aware number/date formatters bound to the active language. */
+export function useFormat() {
+  const { lang } = useContext(LangContext);
+  return useMemo(() => makeFormatters(lang), [lang]);
 }

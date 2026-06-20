@@ -18,7 +18,10 @@
     "server_error": "Something went wrong. Please try again later."
   },
   "landing": {
-    "membersLabel": "Members"
+    "membersLabel": "Members",
+    "heroYears": "under 2 years",
+    "heroSubtitle": "In {years}, from a handful of trainers at Alexanderplatz to one of the biggest communities in Berlin.",
+    "thanks": "Huge thanks to {bobby} and {ute} — and to everyone keeping this community alive with heart. Without you, these would just be numbers. 🫶"
   },
   "sections": {
     "cards": {
@@ -40,6 +43,32 @@
   "meta": {
     "eventsSince": "{events} events · since {since}",
     "dataAsOf": "Data as of: {date}"
+  },
+  "tiers": {
+    "intro": "Just dropped in",
+    "casual": "Occasional guests",
+    "regular": "Regulars",
+    "core": "Club heart",
+    "hardcore": "Hardcore crew",
+    "legend": "The legends"
+  },
+  "eventTypes": {
+    "raids": "Raids",
+    "maxDynamax": "Max & Dynamax",
+    "communityDay": "Community Day",
+    "trade": "Trading",
+    "spotlight": "Spotlight Hour",
+    "research": "Research & Hatch Day",
+    "goFestTour": "GO Fest & Tour",
+    "wildArea": "Wild Area",
+    "other": "Other"
+  },
+  "charts": {
+    "checkins": "Check-ins",
+    "checkinsTotal": "{count} total check-ins",
+    "eventTypeTooltip": "{count} events · avg {avg} check-ins",
+    "participantsTotal": "{count} participants total",
+    "growthTooltipSub": "+{new} new · {events} events"
   },
   "clubStats": {
     "title": "Club statistics",

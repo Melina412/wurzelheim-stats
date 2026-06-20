@@ -1,17 +1,19 @@
 import { motion } from "framer-motion";
 import type { Loyalty } from "@/data/stats";
-import { fmt } from "@/shared/format";
+import { useT, useFormat } from "@/i18n/context";
 
 type Props = { loyalty: Loyalty };
 
 export function LoyaltyTiers({ loyalty }: Props) {
-  const max = Math.max(...loyalty.tiers.map((t) => t.people));
+  const t = useT();
+  const { fmt } = useFormat();
+  const max = Math.max(...loyalty.tiers.map((tier) => tier.people));
 
   return (
     <div className="flex flex-col gap-3">
-      {loyalty.tiers.map((t, i) => (
+      {loyalty.tiers.map((tier, i) => (
         <motion.div
-          key={t.label}
+          key={tier.key}
           initial={{ opacity: 0, x: -16 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-40px" }}
@@ -21,30 +23,30 @@ export function LoyaltyTiers({ loyalty }: Props) {
           <div className="min-w-0">
             <p
               className={`truncate font-semibold ${
-                t.casual ? "text-muted" : "text-base-fg"
+                tier.casual ? "text-muted" : "text-base-fg"
               }`}
             >
-              {t.label}
+              {t(`tiers.${tier.key}`)}
             </p>
             <p className="text-xs text-muted">
-              {t.range === "1" ? "1 Event" : `${t.range} Events`}
+              {tier.range === "1" ? "1 Event" : `${tier.range} Events`}
             </p>
           </div>
           <div className="h-7 overflow-hidden rounded-full bg-go-green/5">
             <motion.div
               initial={{ width: 0 }}
-              whileInView={{ width: `${(t.people / max) * 100}%` }}
+              whileInView={{ width: `${(tier.people / max) * 100}%` }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: i * 0.06, ease: "easeOut" }}
               className={`h-full rounded-full ${
-                t.casual
+                tier.casual
                   ? "bg-go-green/30"
                   : "bg-linear-to-r from-go-green to-go-teal"
               }`}
             />
           </div>
           <span className="w-14 text-right font-bold text-base-fg tabular-nums">
-            {fmt(t.people)}
+            {fmt(tier.people)}
           </span>
         </motion.div>
       ))}
