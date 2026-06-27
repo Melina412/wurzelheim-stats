@@ -70,9 +70,12 @@
     "participantsTotal": "{count} Teilnehmer gesamt",
     "growthTooltipSub": "+{new} neu · {events} Events"
   },
+  "clubHeader": {
+    "eyebrow": "Community-Statistiken",
+    "subtitle": "Eine anonyme Auswertung der Events dieser Pokémon-GO-Community."
+  },
   "clubStats": {
-    "title": "Club-Statistiken",
-    "comingSoon": "Bald hier: Stats für Club {id}"
+    "backHome": "Zur Startseite"
   },
   "generate": {
     "title": "Stats für deine Community generieren",
