@@ -5,8 +5,8 @@
 // SERVER-ONLY: depends on the Redis client (secret env vars). Never imported by
 // client code in src/components or src/pages.
 
-import { db } from "../../db/client";
-import type { ClubRecord } from "./club.types";
+import { db } from "../../db/client.js";
+import type { ClubRecord } from "./club.types.js";
 
 const clubKey = (id: string) => `club:${id}`;
 const viewsKey = (id: string) => `views:${id}`;

@@ -1,13 +1,13 @@
 // Pure aggregation: raw Campfire events -> lean, anonymous stats.
 // No filesystem / network — usable by the build script AND the serverless function.
 
-import type { RawEvent } from "../events";
+import type { RawEvent } from "../events/index.js";
 import type {
   EventEntry,
   EventTypeKey,
   LoyaltyTierKey,
   Stats,
-} from "./stats.types";
+} from "./stats.types.js";
 
 // --- Event type categorisation (priority order: most specific first) ---
 // `type` is a stable i18n key — the UI translates it (de.json/en.json → eventTypes.*).

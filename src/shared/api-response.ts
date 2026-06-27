@@ -2,7 +2,7 @@
 // (which stays framework-free + client-safe) because this references Vercel types.
 
 import type { VercelResponse } from "@vercel/node";
-import { ERROR_STATUS, type ApiErrorCode } from "./api-errors";
+import { ERROR_STATUS, type ApiErrorCode } from "./api-errors.js";
 
 /** Send a stable error code with its mapped HTTP status. Client translates the code. */
 export function fail(

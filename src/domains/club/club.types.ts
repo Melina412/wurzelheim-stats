@@ -1,6 +1,6 @@
 // Club domain — the shareable, stored club record.
 
-import type { Stats } from "../stats";
+import type { Stats } from "../stats/index.js";
 
 export const COLOR_SCHEMES = [
   "green",

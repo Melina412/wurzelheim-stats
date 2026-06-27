@@ -5,11 +5,11 @@
 
 import { timingSafeEqual } from "node:crypto";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { resolveClubId } from "../../src/domains/events";
-import { generateClub, COLOR_SCHEMES } from "../../src/domains/club";
-import type { ColorScheme } from "../../src/domains/club";
-import { ServiceError } from "../../src/shared/api-errors";
-import { fail } from "../../src/shared/api-response";
+import { resolveClubId } from "../../src/domains/events/index.js";
+import { generateClub, COLOR_SCHEMES } from "../../src/domains/club/index.js";
+import type { ColorScheme } from "../../src/domains/club/index.js";
+import { ServiceError } from "../../src/shared/api-errors.js";
+import { fail } from "../../src/shared/api-response.js";
 
 // Constant-time string compare (avoids timing attacks on the master password).
 function safeEqual(a: string, b: string): boolean {

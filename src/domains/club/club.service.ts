@@ -1,10 +1,10 @@
 // Club domain — orchestration. SERVER-ONLY (writes to Redis via club.store).
 
-import { fetchClubEvents } from "../events";
-import { aggregate } from "../stats";
-import { ServiceError } from "../../shared/api-errors";
-import { getClub, setClub } from "./club.store";
-import type { ClubRecord, ColorScheme } from "./club.types";
+import { fetchClubEvents } from "../events/index.js";
+import { aggregate } from "../stats/index.js";
+import { ServiceError } from "../../shared/api-errors.js";
+import { getClub, setClub } from "./club.store.js";
+import type { ClubRecord, ColorScheme } from "./club.types.js";
 
 type GenerateInput = {
   clubId: string;

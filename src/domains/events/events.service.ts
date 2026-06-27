@@ -1,6 +1,6 @@
 // Events domain — access to the cmpf-tools data source.
 
-import type { RawEvent } from "./events.types";
+import type { RawEvent } from "./events.types.js";
 
 const CMPF_BASE = "https://cmpf-tools.de/api";
 const UUID_RE = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i;
