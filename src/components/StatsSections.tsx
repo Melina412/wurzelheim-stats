@@ -63,7 +63,7 @@ export function StatsSections({ stats }: { stats: Stats }) {
             firstName: quoted(totals.firstEvent.name),
             firstDate: fmtDate(totals.firstEvent.date),
             firstCount: (
-              <span className="font-bold text-go-green">
+              <span className="font-bold text-brand">
                 {totals.firstEvent.checkIns}
               </span>
             ),
@@ -103,7 +103,7 @@ export function StatsSections({ stats }: { stats: Stats }) {
               </span>
             ),
             count: (
-              <span className="font-bold text-go-green">
+              <span className="font-bold text-brand">
                 {eventTypes[0].count}
               </span>
             ),
@@ -131,7 +131,7 @@ export function StatsSections({ stats }: { stats: Stats }) {
             ),
             threshold: loyalty.activeThreshold,
             atLeast100: (
-              <span className="font-bold text-go-green">
+              <span className="font-bold text-brand">
                 {loyalty.elite.atLeast100}
               </span>
             ),

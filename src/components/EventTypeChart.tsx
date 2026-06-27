@@ -14,7 +14,7 @@ import { useT, useFormat } from "@/i18n/context";
 type Props = { data: EventType[] };
 
 const COLORS = [
-  "#21a85b", // go-green (primary)
+  "#21a85b", // brand (primary)
   "#7c5cff", // purple
   "#14b8a6", // teal
   "#ffcb05", // yellow
@@ -51,7 +51,7 @@ export function EventTypeChart({ data }: Props) {
           tickFormatter={(v) => t(`eventTypes.${v as EventTypeKey}`)}
         />
         <Tooltip
-          cursor={{ fill: "var(--color-go-green)", fillOpacity: 0.06 }}
+          cursor={{ fill: "var(--color-brand)", fillOpacity: 0.06 }}
           content={({ active, payload }) => {
             if (!active || !payload?.length) return null;
             const d = payload[0].payload as EventType;
@@ -66,7 +66,7 @@ export function EventTypeChart({ data }: Props) {
                     avg: fmt(d.avgCheckIns),
                   })}
                 </p>
-                <p className="text-go-green">
+                <p className="text-brand">
                   {t("charts.checkinsTotal", { count: fmt(d.checkIns) })}
                 </p>
               </div>

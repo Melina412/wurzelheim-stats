@@ -25,7 +25,7 @@ export function TopEvents({ events }: Props) {
         >
           {/* check-in fill bar */}
           <div
-            className="absolute inset-y-0 left-0 z-0 bg-go-green/10"
+            className="absolute inset-y-0 left-0 z-0 bg-brand/10"
             style={{ width: `${(e.checkIns / max) * 100}%` }}
           />
           <div className="relative flex items-center gap-4">
@@ -43,9 +43,7 @@ export function TopEvents({ events }: Props) {
               </p>
             </div>
             <div className="shrink-0 text-right">
-              <p className="text-lg font-bold text-go-green">
-                {fmt(e.checkIns)}
-              </p>
+              <p className="text-lg font-bold text-brand">{fmt(e.checkIns)}</p>
               <p className="text-[11px] uppercase tracking-wide text-muted">
                 {t("charts.checkins")}
               </p>

@@ -25,12 +25,12 @@ export function GrowthChart({ data }: Props) {
           <linearGradient id="growthFill" x1="0" y1="0" x2="0" y2="1">
             <stop
               offset="0%"
-              stopColor="var(--color-go-green)"
+              stopColor="var(--color-brand)"
               stopOpacity={0.55}
             />
             <stop
               offset="100%"
-              stopColor="var(--color-go-green)"
+              stopColor="var(--color-brand)"
               stopOpacity={0.02}
             />
           </linearGradient>
@@ -63,7 +63,7 @@ export function GrowthChart({ data }: Props) {
                 <p className="mb-1 font-semibold text-base-fg">
                   {fmtMonth(String(label))}
                 </p>
-                <p className="text-go-green">
+                <p className="text-brand">
                   {t("charts.participantsTotal", {
                     count: fmt(d.cumulativeParticipants),
                   })}
@@ -81,7 +81,7 @@ export function GrowthChart({ data }: Props) {
         <Area
           type="monotone"
           dataKey="cumulativeParticipants"
-          stroke="var(--color-go-green)"
+          stroke="var(--color-brand)"
           strokeWidth={3}
           fill="url(#growthFill)"
         />

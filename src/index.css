@@ -4,27 +4,57 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Brand palette — primary green taken from the group's logo crest (#398451) */
-  --color-go-green: #21a85b;
-  --color-go-green-deep: #14723e;
-  --color-go-teal: #14b8a6;
+  /* Brand color — themeable per club (default = Wurzelheim green). Override
+     --color-brand / --color-brand-strong via a .scheme-* class (see below). */
+  --color-brand: #21a85b;
+  --color-brand-strong: #14723e;
+  /* Fixed secondary accent (gold) — same across all schemes (top/medal/highlight). */
   --color-go-yellow: #ffcb05;
-  --color-go-red: #ee1515;
-  --color-go-purple: #7c5cff;
 
   --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Semantic tokens that flip between light & dark */
+/* Semantic tokens that flip between light & dark. Light --bg is tinted per
+   color scheme (see below); the default here matches the green scheme. */
 :root {
   --bg: #f3faf5;
   --bg-elevated: #ffffff;
   --bg-card: #ffffff;
-  --border: #dde9e0;
-  --text: #0f1a14;
-  --text-muted: #5d7167;
+  --border: #e4e7ec;
+  --text: #0f172a;
+  --text-muted: #5b6573;
 }
 
+/* Color schemes — applied via a `scheme-*` class on <html> (useColorScheme).
+   No class = the default (green) from :root. Each scheme also tints the LIGHT
+   --bg; the dark bg stays neutral because .dark is declared AFTER and wins. */
+.scheme-green {
+  --color-brand: #21a85b;
+  --color-brand-strong: #14723e;
+  --bg: #f3faf5;
+}
+.scheme-blue {
+  --color-brand: #2e7dd8;
+  --color-brand-strong: #1b5bab;
+  --bg: #f1f6fc;
+}
+.scheme-red {
+  --color-brand: #e23b3b;
+  --color-brand-strong: #a82323;
+  --bg: #fdf3f3;
+}
+.scheme-amber {
+  --color-brand: #e08a1e;
+  --color-brand-strong: #a85f00;
+  --bg: #fbf6ec;
+}
+.scheme-purple {
+  --color-brand: #7c5cff;
+  --color-brand-strong: #5a3fd6;
+  --bg: #f6f4fd;
+}
+
+/* Dark mode — neutral for every scheme (declared last → overrides scheme --bg). */
 .dark {
   --bg: #121212;
   --bg-elevated: #1e1e1e;
@@ -46,7 +76,9 @@ body {
   font-family: var(--font-display);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background 0.4s ease, color 0.4s ease;
+  transition:
+    background 0.4s ease,
+    color 0.4s ease;
 }
 
 /* Utility helpers bound to the semantic tokens */

@@ -32,7 +32,7 @@ export function LoyaltyTiers({ loyalty }: Props) {
               {tier.range === "1" ? "1 Event" : `${tier.range} Events`}
             </p>
           </div>
-          <div className="h-7 overflow-hidden rounded-full bg-go-green/5">
+          <div className="h-7 overflow-hidden rounded-full bg-brand/5">
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: `${(tier.people / max) * 100}%` }}
@@ -40,8 +40,8 @@ export function LoyaltyTiers({ loyalty }: Props) {
               transition={{ duration: 0.8, delay: i * 0.06, ease: "easeOut" }}
               className={`h-full rounded-full ${
                 tier.casual
-                  ? "bg-go-green/30"
-                  : "bg-linear-to-r from-go-green to-go-teal"
+                  ? "bg-brand/30"
+                  : "bg-linear-to-r from-brand to-brand-strong"
               }`}
             />
           </div>
