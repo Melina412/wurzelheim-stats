@@ -36,7 +36,7 @@ async function main() {
     back?.displayName === record.displayName &&
     back?.stats.totals.events === stats.totals.events;
   console.log(
-    `   Roundtrip ${roundtripOk ? "OK ✅" : "MISMATCH ❌"} (events gelesen: ${back?.stats.totals.events})`,
+    `   Roundtrip ${roundtripOk ? "OK ✅" : "MISMATCH ❌"} (events read: ${back?.stats.totals.events})`,
   );
 
   console.log("→ incrViews ×2 …");
@@ -45,11 +45,11 @@ async function main() {
   console.log(`   views = ${views}`);
 
   await clearClub(TEST_ID);
-  console.log("→ Testschlüssel gelöscht 🧹");
-  console.log("✅ Upstash Connect + Schreiben/Lesen/Counter funktionieren.");
+  console.log("→ Test keys deleted 🧹");
+  console.log("✅ Upstash connect + write/read/counter all work.");
 }
 
 main().catch((err) => {
-  console.error("❌ Test fehlgeschlagen:", err);
+  console.error("❌ Test failed:", err);
   process.exit(1);
 });

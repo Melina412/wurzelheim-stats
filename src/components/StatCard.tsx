@@ -24,7 +24,7 @@ export function StatCard({
       variants={statCardVariant}
       className="rounded-2xl border border-base bg-card p-6 text-left shadow-sm"
     >
-      <Icon className="mb-3 text-go-green" size={26} />
+      <Icon className="mb-3 text-brand" size={26} />
       <div className="text-3xl font-extrabold tracking-tight text-base-fg sm:text-4xl">
         <AnimatedNumber value={value} />
         {suffix}

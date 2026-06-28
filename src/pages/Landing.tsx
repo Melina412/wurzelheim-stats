@@ -15,7 +15,7 @@ export function Landing() {
   return (
     <div className="relative overflow-hidden">
       {/* ambient glow */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-150 bg-[radial-gradient(60%_60%_at_50%_0%,var(--color-go-green)_0%,transparent_70%)] opacity-20" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-150 bg-[radial-gradient(60%_60%_at_50%_0%,var(--color-brand)_0%,transparent_70%)] opacity-20" />
 
       {/* HERO (Wurzelheim-specific) */}
       <header className="mx-auto flex max-w-4xl flex-col items-center px-6 pt-24 pb-16 text-center">
@@ -33,7 +33,7 @@ export function Landing() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-go-green"
+          className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-brand"
         >
           {club.name}
         </motion.p>
@@ -44,7 +44,7 @@ export function Landing() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="mt-3 text-base font-semibold uppercase tracking-[0.2em] text-go-green sm:text-lg"
+          className="mt-3 text-base font-semibold uppercase tracking-[0.2em] text-brand sm:text-lg"
         >
           {t("landing.membersLabel")}
         </motion.p>
@@ -76,8 +76,8 @@ export function Landing() {
           className="text-lg text-muted sm:text-xl"
         >
           {rich(t("landing.thanks"), {
-            bobby: <span className="font-bold text-go-green">Bobby</span>,
-            ute: <span className="font-bold text-go-green">Ute</span>,
+            bobby: <span className="font-bold text-brand">Bobby</span>,
+            ute: <span className="font-bold text-brand">Ute</span>,
           })}
         </motion.p>
       </section>

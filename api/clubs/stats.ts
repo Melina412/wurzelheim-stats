@@ -8,9 +8,9 @@
 // re-invoke the function, so views would undercount).
 
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { parseClubId } from "../../src/domains/events";
-import { getClub, incrViews } from "../../src/domains/club";
-import { fail } from "../../src/shared/api-response";
+import { parseClubId } from "../../src/domains/events/index.js";
+import { getClub, incrViews } from "../../src/domains/club/index.js";
+import { fail, failFromError } from "../../src/shared/api-response.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "GET") {
@@ -31,7 +31,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.setHeader("Cache-Control", "no-store");
     return res.status(200).json({ ...record, views });
   } catch (err) {
-    console.error("[stats] failed:", err);
-    return fail(res, "server_error");
+    return failFromError(res, err, "stats");
   }
 }

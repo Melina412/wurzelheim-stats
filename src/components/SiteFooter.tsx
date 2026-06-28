@@ -5,7 +5,7 @@ const REPO_URL = "https://github.com/Melina412/wurzelheim-stats";
 const AUTHOR_URL = "https://github.com/Melina412";
 
 const linkClass =
-  "inline-flex items-center gap-2 rounded-full border border-base bg-card px-4 py-2 text-xs font-medium text-base-fg transition hover:border-go-green hover:text-go-green";
+  "inline-flex items-center gap-2 rounded-full border border-base bg-card px-4 py-2 text-xs font-medium text-base-fg transition hover:border-brand hover:text-brand";
 
 /** Global footer (every route): author credit + repo links. Text is constant
  *  (not translated). */
@@ -18,7 +18,7 @@ export function SiteFooter() {
           href={AUTHOR_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-medium text-base-fg transition hover:text-go-green"
+          className="font-medium text-base-fg transition hover:text-brand"
         >
           Melina412
         </a>{" "}

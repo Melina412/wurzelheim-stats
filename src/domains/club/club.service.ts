@@ -1,10 +1,10 @@
 // Club domain — orchestration. SERVER-ONLY (writes to Redis via club.store).
 
-import { fetchClubEvents } from "../events";
-import { aggregate } from "../stats";
-import { ServiceError } from "../../shared/api-errors";
-import { getClub, setClub } from "./club.store";
-import type { ClubRecord, ColorScheme } from "./club.types";
+import { fetchClubEvents } from "../events/index.js";
+import { aggregate } from "../stats/index.js";
+import { ServiceError } from "../../shared/api-errors.js";
+import { getClub, setClub, incrGenerations } from "./club.store.js";
+import type { ClubRecord, ColorScheme } from "./club.types.js";
 
 type GenerateInput = {
   clubId: string;
@@ -42,12 +42,15 @@ export async function generateClub(input: GenerateInput): Promise<ClubRecord> {
   const stats = aggregate(events, { dataAsOf: now.toISOString().slice(0, 10) });
 
   const record: ClubRecord = {
-    displayName: input.displayName,
+    // Fall back to the club name detected in the event data when no display
+    // name was provided (e.g. the user entered a raw club id, not an event link).
+    displayName: input.displayName.trim() || stats.club.name,
     colorScheme: input.colorScheme,
     stats,
     generatedAt: now.toISOString(),
   };
 
   await setClub(input.clubId, record);
+  await incrGenerations(input.clubId);
   return record;
 }

@@ -21,11 +21,11 @@ export function TopEvents({ events }: Props) {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ delay: i * 0.05 }}
-          className="relative overflow-hidden rounded-xl border border-base bg-card px-4 py-3"
+          className="relative overflow-hidden rounded-xl border border-brand/25 bg-card px-4 py-3"
         >
           {/* check-in fill bar */}
           <div
-            className="absolute inset-y-0 left-0 z-0 bg-go-green/10"
+            className="absolute inset-y-0 left-0 z-0 bg-brand/10"
             style={{ width: `${(e.checkIns / max) * 100}%` }}
           />
           <div className="relative flex items-center gap-4">
@@ -43,7 +43,7 @@ export function TopEvents({ events }: Props) {
               </p>
             </div>
             <div className="shrink-0 text-right">
-              <p className="text-lg font-bold text-go-green">
+              <p className="text-lg font-bold text-highlight">
                 {fmt(e.checkIns)}
               </p>
               <p className="text-[11px] uppercase tracking-wide text-muted">
