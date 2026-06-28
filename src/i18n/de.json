@@ -71,14 +71,55 @@
     "growthTooltipSub": "+{new} neu · {events} Events"
   },
   "clubHeader": {
-    "eyebrow": "Community-Statistiken",
-    "subtitle": "Eine anonyme Auswertung der Events dieser Pokémon-GO-Community."
+    "eyebrow": "Community-Statistiken"
   },
   "clubStats": {
     "backHome": "Zur Startseite"
   },
   "generate": {
-    "title": "Stats für deine Community generieren",
-    "comingSoon": "Bald hier: der Generate-Wizard."
+    "stepLabel": "Schritt {n} von {total}",
+    "auth": {
+      "title": "Passwortgeschützt",
+      "desc": "Neue Club-Seiten lassen sich nur mit Master-Passwort erstellen.",
+      "placeholder": "Master-Passwort",
+      "submit": "Weiter"
+    },
+    "input": {
+      "idTitle": "Deine Club-ID",
+      "idDesc": "Die ID deiner Campfire-Gruppe.",
+      "idPlaceholder": "z. B. d9db54b6-fa9a-446e-9852-b7aa6a2714c1",
+      "noId": "Ich kenne meine Club-ID nicht",
+      "linkTitle": "Event-Link",
+      "linkDesc": "Öffne in der Campfire-App ein Meetup deines Clubs, tippe auf „Teilen“ und kopiere den Link. Daraus lesen wir deine Club-ID aus.",
+      "linkPlaceholder": "https://cmpf.re/… oder campfire.nianticlabs.com/…",
+      "haveId": "Ich habe doch meine Club-ID",
+      "submit": "Weiter"
+    },
+    "configure": {
+      "title": "Fast geschafft",
+      "found": "Gefunden: {name}",
+      "foundId": "Club-ID: {id}",
+      "nameLabel": "Anzeigename",
+      "nameDesc": "So wird die Community auf der Seite genannt.",
+      "namePlaceholder": "Name der Community",
+      "colorLabel": "Farbschema",
+      "colorDesc": "Such dir eine Farbe aus in der die Stats angezeigt werden sollen.",
+      "submit": "Statistiken erstellen"
+    },
+    "generating": {
+      "title": "Statistiken werden erstellt…",
+      "desc": "Wir holen und verarbeiten alle Events – das kann einen Moment dauern."
+    },
+    "back": "Zurück",
+    "toExisting": "Zur bestehenden Seite",
+    "noEventsHint": "Vermutlich ist deine Community (noch) nicht in unserer Datenquelle erfasst — meist sind nur Communities mit Ambassador-Status enthalten.",
+    "moreInfo": "Mehr Infos",
+    "schemes": {
+      "green": "Grün",
+      "blue": "Blau",
+      "red": "Rot",
+      "amber": "Bernstein",
+      "purple": "Lila"
+    }
   }
 }

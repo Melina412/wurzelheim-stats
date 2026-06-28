@@ -71,14 +71,55 @@
     "growthTooltipSub": "+{new} new · {events} events"
   },
   "clubHeader": {
-    "eyebrow": "Community statistics",
-    "subtitle": "An anonymous breakdown of this Pokémon GO community's events."
+    "eyebrow": "Community statistics"
   },
   "clubStats": {
     "backHome": "Back to home"
   },
   "generate": {
-    "title": "Generate stats for your community",
-    "comingSoon": "Coming soon: the generate wizard."
+    "stepLabel": "Step {n} of {total}",
+    "auth": {
+      "title": "Password protected",
+      "desc": "Creating new club pages requires the master password.",
+      "placeholder": "Master password",
+      "submit": "Continue"
+    },
+    "input": {
+      "idTitle": "Your club ID",
+      "idDesc": "The ID of your Campfire group.",
+      "idPlaceholder": "e.g. d9db54b6-fa9a-446e-9852-b7aa6a2714c1",
+      "noId": "I don't know my club ID",
+      "linkTitle": "Event link",
+      "linkDesc": "In the Campfire app, open one of your club's meetups, tap “Share” and copy the link. We'll read your club ID from it.",
+      "linkPlaceholder": "https://cmpf.re/… or campfire.nianticlabs.com/…",
+      "haveId": "I do have my club ID",
+      "submit": "Continue"
+    },
+    "configure": {
+      "title": "Almost there",
+      "found": "Found: {name}",
+      "foundId": "Club ID: {id}",
+      "nameLabel": "Display name",
+      "nameDesc": "How the community is labeled on the page.",
+      "namePlaceholder": "Community name",
+      "colorLabel": "Color scheme",
+      "colorDesc": "Pick a color for the stats page theme.",
+      "submit": "Create statistics"
+    },
+    "generating": {
+      "title": "Creating statistics…",
+      "desc": "We're fetching and processing all events – this may take a moment."
+    },
+    "back": "Back",
+    "toExisting": "Go to existing page",
+    "noEventsHint": "Your community is probably not (yet) in our data source — usually only communities with ambassador status are included.",
+    "moreInfo": "More info",
+    "schemes": {
+      "green": "Green",
+      "blue": "Blue",
+      "red": "Red",
+      "amber": "Amber",
+      "purple": "Purple"
+    }
   }
 }
