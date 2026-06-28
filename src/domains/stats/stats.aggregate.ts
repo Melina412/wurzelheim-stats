@@ -224,7 +224,7 @@ export function aggregate(
     generatedFrom: events.length + " events",
     dataAsOf: opts.dataAsOf,
     club: {
-      name: club.name ?? "Wurzelheim Alexanderplatz",
+      name: club.name ?? "",
     },
     totals: {
       events: events.length,

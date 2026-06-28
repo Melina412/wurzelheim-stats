@@ -23,6 +23,9 @@
   --border: #e4e7ec;
   --text: #0f172a;
   --text-muted: #5b6573;
+  /* Highlighted numbers in copy: use the darker brand shade so it stays legible
+     on a light bg (the bright brand is reserved for dark mode below). */
+  --highlight: var(--color-brand-strong);
 }
 
 /* Color schemes — applied via a `scheme-*` class on <html> (useColorScheme).
@@ -38,15 +41,18 @@
   --color-brand-strong: #1b5bab;
   --bg: #f1f6fc;
 }
+/* red: cherry / crimson — leans pink (not orange) but stays clearly red */
 .scheme-red {
-  --color-brand: #e23b3b;
-  --color-brand-strong: #a82323;
-  --bg: #fdf3f3;
+  --color-brand: #dc2649;
+  --color-brand-strong: #a8123a;
+  --bg: #fdf2f4;
 }
+/* amber: bright "Instinct" citrus yellow. Deliberately bright (low text
+   contrast is the trade-off); brand-strong is a deeper gold for gradients. */
 .scheme-amber {
-  --color-brand: #e08a1e;
-  --color-brand-strong: #a85f00;
-  --bg: #fbf6ec;
+  --color-brand: #f0be00;
+  --color-brand-strong: #b07d00;
+  --bg: #fefae2;
 }
 .scheme-purple {
   --color-brand: #7c5cff;
@@ -62,6 +68,8 @@
   --border: #2c2c2c;
   --text: #ededed;
   --text-muted: #9a9a9a;
+  /* Dark mode: the bright brand pops nicely on the dark bg. */
+  --highlight: var(--color-brand);
 }
 
 html {
@@ -99,4 +107,7 @@ body {
 }
 @utility text-muted {
   color: var(--text-muted);
+}
+@utility text-highlight {
+  color: var(--highlight);
 }

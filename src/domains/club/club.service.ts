@@ -42,7 +42,9 @@ export async function generateClub(input: GenerateInput): Promise<ClubRecord> {
   const stats = aggregate(events, { dataAsOf: now.toISOString().slice(0, 10) });
 
   const record: ClubRecord = {
-    displayName: input.displayName,
+    // Fall back to the club name detected in the event data when no display
+    // name was provided (e.g. the user entered a raw club id, not an event link).
+    displayName: input.displayName.trim() || stats.club.name,
     colorScheme: input.colorScheme,
     stats,
     generatedAt: now.toISOString(),

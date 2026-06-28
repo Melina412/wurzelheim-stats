@@ -5,7 +5,7 @@ import { useT } from "@/i18n/context";
 export function ClubHeader({ name }: { name: string }) {
   const t = useT();
   return (
-    <header className="mx-auto max-w-4xl px-6 pt-24 pb-36 text-center">
+    <header className="mx-auto max-w-4xl px-6 pt-24 pb-20 text-center">
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -20,6 +20,14 @@ export function ClubHeader({ name }: { name: string }) {
       >
         {name}
       </motion.h1>
+      <motion.p
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        className="mx-auto mt-4 max-w-2xl text-lg text-muted"
+      >
+        {t("clubHeader.subtitle")}
+      </motion.p>
     </header>
   );
 }

@@ -25,11 +25,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       : (req.body ?? {});
 
   const input = String(body.club ?? "");
+  // Optional — if blank, the service falls back to the detected club name.
   const displayName = String(body.displayName ?? "").trim();
   const colorScheme = String(body.colorScheme ?? "");
 
-  if (!displayName || displayName.length > 60)
-    return fail(res, "invalid_input");
+  if (displayName.length > 60) return fail(res, "invalid_input");
   if (!(COLOR_SCHEMES as readonly string[]).includes(colorScheme)) {
     return fail(res, "invalid_color");
   }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useClubStats } from "@/hooks/useClubStats";
 import { useColorScheme } from "@/hooks/useColorScheme";
@@ -5,14 +6,20 @@ import { useT } from "@/i18n/context";
 import { ClubHeader } from "@/components/ClubHeader";
 import { StatsSections } from "@/components/StatsSections";
 import { StatsMeta } from "@/components/StatsMeta";
+import { ColorSchemePicker } from "@/components/ColorSchemePicker";
+import type { ColorScheme } from "@/domains/club/club.types";
 
 export function ClubStats() {
   const { id } = useParams();
   const t = useT();
   const state = useClubStats(id ?? "");
 
-  // Apply the club's color scheme once loaded (green as a neutral default before).
-  useColorScheme(state.status === "ok" ? state.data.colorScheme : "green");
+  // Dev-only: locally override the displayed scheme to tune colors without
+  // regenerating. null = use the club's stored scheme.
+  const [override, setOverride] = useState<ColorScheme | null>(null);
+  const scheme =
+    override ?? (state.status === "ok" ? state.data.colorScheme : "green");
+  useColorScheme(scheme);
 
   if (state.status === "loading") {
     return (
@@ -45,6 +52,14 @@ export function ClubStats() {
       <ClubHeader name={data.displayName} />
       <StatsSections stats={data.stats} />
       <StatsMeta clubName={data.displayName} stats={data.stats} />
+
+      {/* Dev-only scheme switcher — tune colors live without regenerating. */}
+      {import.meta.env.DEV && (
+        <div className="fixed bottom-5 left-5 z-50 rounded-2xl border border-base bg-card/90 p-3 shadow-lg backdrop-blur">
+          <p className="mb-2 text-xs font-semibold text-muted">Scheme (dev)</p>
+          <ColorSchemePicker value={scheme} onChange={setOverride} />
+        </div>
+      )}
     </div>
   );
 }

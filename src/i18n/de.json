@@ -71,7 +71,8 @@
     "growthTooltipSub": "+{new} neu · {events} Events"
   },
   "clubHeader": {
-    "eyebrow": "Community-Statistiken"
+    "eyebrow": "Community-Statistiken",
+    "subtitle": "Events, Check-ins und Wachstum der Pokémon-GO-Community auf einen Blick."
   },
   "clubStats": {
     "backHome": "Zur Startseite"
@@ -100,7 +101,7 @@
       "found": "Gefunden: {name}",
       "foundId": "Club-ID: {id}",
       "nameLabel": "Anzeigename",
-      "nameDesc": "So wird die Community auf der Seite genannt.",
+      "nameDesc": "So wird die Community auf der Seite genannt. Leer lassen = automatisch erkannter Name.",
       "namePlaceholder": "Name der Community",
       "colorLabel": "Farbschema",
       "colorDesc": "Such dir eine Farbe aus in der die Stats angezeigt werden sollen.",
@@ -118,7 +119,7 @@
       "green": "Grün",
       "blue": "Blau",
       "red": "Rot",
-      "amber": "Bernstein",
+      "amber": "Gelb",
       "purple": "Lila"
     }
   }
