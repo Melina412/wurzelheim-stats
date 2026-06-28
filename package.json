@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "aggregate": "tsx scripts/aggregate.ts",
     "test:redis": "tsx scripts/test-redis.ts",
-    "reset:club": "tsx scripts/reset-club.ts"
+    "reset:club": "tsx scripts/reset-club.ts",
+    "stats": "tsx scripts/stats.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",

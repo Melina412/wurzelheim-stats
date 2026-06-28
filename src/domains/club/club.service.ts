@@ -3,7 +3,7 @@
 import { fetchClubEvents } from "../events/index.js";
 import { aggregate } from "../stats/index.js";
 import { ServiceError } from "../../shared/api-errors.js";
-import { getClub, setClub } from "./club.store.js";
+import { getClub, setClub, incrGenerations } from "./club.store.js";
 import type { ClubRecord, ColorScheme } from "./club.types.js";
 
 type GenerateInput = {
@@ -51,5 +51,6 @@ export async function generateClub(input: GenerateInput): Promise<ClubRecord> {
   };
 
   await setClub(input.clubId, record);
+  await incrGenerations(input.clubId);
   return record;
 }

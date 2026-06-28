@@ -5,7 +5,7 @@
 // Loads .env.local for the Upstash credentials.
 
 import { resolveClub } from "../src/domains/events";
-import { getClub, getViews, clearClub } from "../src/domains/club";
+import { getClub, getViews, clearClubRecord } from "../src/domains/club";
 
 // Load local secrets (.env.local). Node 22+ built-in; ignore if absent.
 try {
@@ -31,10 +31,12 @@ async function main(input: string) {
   }
 
   const views = await getViews(clubId);
-  await clearClub(clubId);
+  await clearClubRecord(clubId);
   console.log(`🧹 Reset: "${existing.displayName}" (${clubId})`);
-  console.log(`   Deleted record + ${views} views — cooldown reset.`);
-  console.log("   → You can now regenerate the club in the wizard.");
+  console.log(`   Cooldown cleared — ${views} views kept.`);
+  console.log(
+    "   → Regenerate in the wizard; the view counter keeps counting.",
+  );
 }
 
 const input = process.argv[2];
