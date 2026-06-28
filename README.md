@@ -10,8 +10,10 @@ Anlass war unser **5000-Mitglieder-Jubiläum** 🎉.
 ## Vom Jubiläum zum Generator
 
 Auf Nachfrage aus der Community wurde aus der einen Seite ein **Generator**: Jede
-Community kann sich ihre eigene, teilbare Statistik-Seite erstellen — in eigener
-Farbe und unter einer eigenen Adresse (`/club/<id>`).
+Community kann sich ihre eigene, teilbaren Stats erstellen — in eigener Farbe und
+unter einer eigenem Link (`/club/<id>`).
+
+➡️ [Hier kannst du deine Stats generieren](https://stats.wurzelheim.de/generate) ✨
 
 <a id="warum-keine-stats"></a>
 
@@ -53,6 +55,8 @@ types and the active heart of the community. The first occasion was our
 By popular demand from the community, the single page became a **generator**: any
 community can create its own shareable stats page — in its own color and under its
 own address (`/club/<id>`).
+
+➡️ [You can generate your stats here](https://stats.wurzelheim.de/generate) ✨
 
 ## Requirements & rules
 
