@@ -6,6 +6,7 @@
 // process.env reference would break the Vite build anyway (loud safety net).
 
 import { Redis } from "@upstash/redis";
+import { ServiceError } from "../shared/api-errors.js";
 
 let client: Redis | null = null;
 
@@ -18,9 +19,8 @@ export function db(): Redis {
   const url = process.env.UPSTASH_REDIS_REST_URL;
   const token = process.env.UPSTASH_REDIS_REST_TOKEN;
   if (!url || !token) {
-    throw new Error(
-      "UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN are not set",
-    );
+    // Missing secrets = deployment misconfiguration, not a runtime/upstream fault.
+    throw new ServiceError("server_misconfigured");
   }
   client = new Redis({ url, token });
   return client;

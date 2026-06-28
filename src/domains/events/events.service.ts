@@ -1,5 +1,6 @@
 // Events domain — access to the cmpf-tools data source.
 
+import { ServiceError } from "../../shared/api-errors.js";
 import type { RawEvent } from "./events.types.js";
 
 const CMPF_BASE = "https://cmpf-tools.de/api";
@@ -18,40 +19,56 @@ export function parseClubId(input: string): string | null {
 export async function fetchClubEvents(clubId: string): Promise<RawEvent[]> {
   const res = await fetch(`${CMPF_BASE}/clubs/${clubId}/events`);
   if (!res.ok) {
-    throw new Error(
-      `cmpf-tools returned HTTP ${res.status} for club ${clubId}`,
-    );
+    throw new ServiceError("upstream_error");
   }
   const data = (await res.json()) as RawEvent[];
   if (!Array.isArray(data)) {
-    throw new Error("Unexpected response shape from cmpf-tools");
+    throw new ServiceError("upstream_error");
   }
   return data;
 }
 
-/** Look up the club an event belongs to (cmpf-tools event endpoint → club.id). */
-async function fetchClubIdFromEvent(eventId: string): Promise<string> {
+/**
+ * Look up the club an event belongs to via the lightweight cmpf-tools event
+ * endpoint (a few KB — unlike the full events list). Returns id + name.
+ */
+async function fetchClubFromEvent(
+  eventId: string,
+): Promise<{ id: string; name: string }> {
   const res = await fetch(`${CMPF_BASE}/events?events=${eventId}`);
   if (!res.ok) {
-    throw new Error(
-      `cmpf-tools returned HTTP ${res.status} for event ${eventId}`,
-    );
+    throw new ServiceError("upstream_error");
   }
-  const data = (await res.json()) as { club?: { id?: string } }[];
-  const clubId = data?.[0]?.club?.id;
-  if (!clubId) throw new Error("Could not resolve club from event link");
-  return clubId;
+  const data = (await res.json()) as {
+    club?: { id?: string; name?: string };
+  }[];
+  const club = data?.[0]?.club;
+  // Valid response but no club → the event link/id is wrong (user input fault).
+  if (!club?.id) throw new ServiceError("invalid_input");
+  return { id: club.id, name: club.name ?? "" };
 }
 
 /**
- * Resolve a club id from arbitrary user input:
- *  - an Event/Meetup link  → look up the event and return its club.id
- *  - a club link / raw UUID → use directly
+ * Resolve arbitrary user input to a club id (+ name when cheaply available):
+ *  - an Event/Meetup link  → look up the event → club.id + club.name
+ *  - a club link / raw UUID → use the id directly; name is unknown (null) since
+ *    the only club endpoint is the multi-MB events list (too costly for preview)
  * Returns null if no UUID can be found. May throw on network failure.
  */
-export async function resolveClubId(input: string): Promise<string | null> {
+export async function resolveClub(
+  input: string,
+): Promise<{ clubId: string; clubName: string | null } | null> {
   const id = parseClubId(input);
   if (!id) return null;
-  if (/meetup|event/i.test(input)) return fetchClubIdFromEvent(id);
-  return id;
+  if (/meetup|event/i.test(input)) {
+    const club = await fetchClubFromEvent(id);
+    return { clubId: club.id, clubName: club.name || null };
+  }
+  return { clubId: id, clubName: null };
+}
+
+/** Resolve user input to just the club id (used by /generate). */
+export async function resolveClubId(input: string): Promise<string | null> {
+  const resolved = await resolveClub(input);
+  return resolved?.clubId ?? null;
 }

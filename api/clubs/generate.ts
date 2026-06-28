@@ -3,21 +3,12 @@
 // Errors are returned as stable codes (see src/shared/api-errors) — the client
 // translates them.
 
-import { timingSafeEqual } from "node:crypto";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { resolveClubId } from "../../src/domains/events/index.js";
 import { generateClub, COLOR_SCHEMES } from "../../src/domains/club/index.js";
 import type { ColorScheme } from "../../src/domains/club/index.js";
-import { ServiceError } from "../../src/shared/api-errors.js";
-import { fail } from "../../src/shared/api-response.js";
-
-// Constant-time string compare (avoids timing attacks on the master password).
-function safeEqual(a: string, b: string): boolean {
-  const ab = Buffer.from(a);
-  const bb = Buffer.from(b);
-  if (ab.length !== bb.length) return false;
-  return timingSafeEqual(ab, bb);
-}
+import { checkMasterPassword } from "../../src/shared/auth.js";
+import { fail, failFromError } from "../../src/shared/api-response.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
@@ -25,12 +16,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return fail(res, "method_not_allowed");
   }
 
-  const expected = process.env.MASTER_PW;
-  if (!expected) return fail(res, "server_misconfigured");
-
-  const header = req.headers["x-master-password"];
-  const provided = Array.isArray(header) ? header[0] : (header ?? "");
-  if (!safeEqual(provided, expected)) return fail(res, "unauthorized");
+  const authErr = checkMasterPassword(req);
+  if (authErr) return fail(res, authErr);
 
   const body =
     typeof req.body === "string"
@@ -60,14 +47,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       .status(200)
       .json({ ok: true, clubId, generatedAt: record.generatedAt });
   } catch (err) {
-    if (err instanceof ServiceError) {
-      return fail(
-        res,
-        err.code,
-        err.retryAfterMs ? { retryAfterMs: err.retryAfterMs } : undefined,
-      );
-    }
-    console.error("[generate] failed:", err);
-    return fail(res, "upstream_error");
+    return failFromError(res, err, "generate");
   }
 }
