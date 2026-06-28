@@ -9,7 +9,7 @@
 
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { parseClubId } from "../../src/domains/events/index.js";
-import { getClub, incrViews } from "../../src/domains/club/index.js";
+import { getClub, incrViews, getViews } from "../../src/domains/club/index.js";
 import { fail, failFromError } from "../../src/shared/api-response.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -27,7 +27,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const record = await getClub(clubId);
     if (!record) return fail(res, "club_not_generated");
 
-    const views = await incrViews(clubId);
+    // Only count real production traffic — dev (vercel dev) + preview testing
+    // hit the same DB and would otherwise inflate the public counter (also
+    // doubled by StrictMode's dev double-render). Non-prod just reads the value.
+    const views =
+      process.env.VERCEL_ENV === "production"
+        ? await incrViews(clubId)
+        : await getViews(clubId);
     res.setHeader("Cache-Control", "no-store");
     return res.status(200).json({ ...record, views });
   } catch (err) {
