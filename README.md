@@ -79,3 +79,36 @@ itself belongs to Niantic, Inc.
 ## License
 
 See [`LICENSE`](LICENSE).
+
+---
+
+## Development
+
+Requires **Node 22+** and the [Vercel CLI](https://vercel.com/docs/cli). The app's
+serverless API (`/api/*`) needs the Vercel runtime, which plain Vite doesn't provide —
+so use `vercel dev`, not `npm run dev`, for the full app.
+
+```bash
+npm install
+npm i -g vercel        # if not installed
+vercel link            # link to the Vercel project (one-time)
+vercel dev             # http://localhost:3000 — frontend (HMR) + API
+```
+
+Secrets are read from a `.env.local` in the project root (also pullable with
+`vercel env pull`):
+
+```
+UPSTASH_REDIS_REST_URL=…
+UPSTASH_REDIS_REST_TOKEN=…
+MASTER_PW=…
+```
+
+`npm run dev` (Vite only, port 5173) is fine for pure frontend work, but the `/api/*`
+routes 404 without `vercel dev`.
+
+### Scripts
+
+- `npm run build` — production build
+- `npm run stats` — list stored clubs with view + generation counts
+- `npm run reset:club -- <id | link>` — clear a club's generate cooldown (keeps views)
