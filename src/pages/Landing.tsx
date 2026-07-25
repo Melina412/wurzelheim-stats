@@ -4,6 +4,7 @@ import { StatsMeta } from "@/components/StatsMeta";
 import { stats } from "@/data/stats";
 import { useT } from "@/i18n/context";
 import { useFireworks } from "@/hooks/useFireworks";
+import { usePageHit } from "@/hooks/usePageHit";
 import { rich } from "@/shared/rich";
 
 // Hero + thanks are Wurzelheim-specific (club name, the 2-year milestone, the
@@ -12,6 +13,7 @@ export function Landing() {
   const { club } = stats;
   const t = useT();
   useFireworks();
+  usePageHit("landing");
 
   return (
     <div className="relative overflow-hidden">
