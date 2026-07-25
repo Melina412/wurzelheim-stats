@@ -18,9 +18,9 @@
     "server_error": "Something went wrong. Please try again later."
   },
   "landing": {
-    "membersLabel": "Members",
-    "heroYears": "under 2 years",
-    "heroSubtitle": "In {years}, from a handful of trainers at Alexanderplatz to one of the biggest communities in Berlin.",
+    "heroTitle": "2 Years",
+    "heroLabel": "Anniversary",
+    "heroSubtitle": "From a handful of trainers at Alexanderplatz to one of the biggest communities in Berlin.",
     "thanks": "Huge thanks to {bobby} and {ute} — and to everyone keeping this community alive with heart. Without you, these would just be numbers. 🫶"
   },
   "sections": {

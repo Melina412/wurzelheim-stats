@@ -16,8 +16,7 @@ dist-ssr
 # Re-fetch via the curl command in README, then run scripts/aggregate.mjs.
 /data/events_raw.json
 
-# Private legends list — contains usernames (PII), internal use only.
-/LEGENDEN-privat.md
+*-privat.md
 /scripts/resolve-legends.mjs
 
 # Editor directories and files

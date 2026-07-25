@@ -1,16 +1,17 @@
 import { motion } from "framer-motion";
-import { AnimatedNumber } from "@/components/AnimatedNumber";
 import { StatsSections } from "@/components/StatsSections";
 import { StatsMeta } from "@/components/StatsMeta";
 import { stats } from "@/data/stats";
 import { useT } from "@/i18n/context";
+import { useFireworks } from "@/hooks/useFireworks";
 import { rich } from "@/shared/rich";
 
-// Hero + thanks are Wurzelheim-specific (club name, the 5000 milestone, the
+// Hero + thanks are Wurzelheim-specific (club name, the 2-year milestone, the
 // names) but the copy is translated; the shared sections live in <StatsSections />.
 export function Landing() {
   const { club } = stats;
   const t = useT();
+  useFireworks();
 
   return (
     <div className="relative overflow-hidden">
@@ -37,30 +38,34 @@ export function Landing() {
         >
           {club.name}
         </motion.p>
-        <h1 className="text-6xl font-black leading-none tracking-tighter text-base-fg sm:text-8xl">
-          <AnimatedNumber value={5000} duration={2.5} />
-        </h1>
+        <motion.h1
+          initial={{ scale: 0.2, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 160,
+            damping: 12,
+            delay: 0.15,
+          }}
+          className="text-6xl font-black leading-none tracking-tighter text-base-fg sm:text-8xl"
+        >
+          {t("landing.heroTitle")}
+        </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
           className="mt-3 text-base font-semibold uppercase tracking-[0.2em] text-brand sm:text-lg"
         >
-          {t("landing.membersLabel")}
+          {t("landing.heroLabel")}
         </motion.p>
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.55 }}
+          transition={{ delay: 0.5 }}
           className="mt-5 max-w-xl text-lg text-muted sm:text-xl"
         >
-          {rich(t("landing.heroSubtitle"), {
-            years: (
-              <span className="font-semibold text-base-fg">
-                {t("landing.heroYears")}
-              </span>
-            ),
-          })}
+          {t("landing.heroSubtitle")}
         </motion.p>
       </header>
 

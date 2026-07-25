@@ -1,30 +1,30 @@
 {
-  "generatedFrom": "290 events",
-  "dataAsOf": "2026-05-31",
+  "generatedFrom": "329 events",
+  "dataAsOf": "2026-07-25",
   "club": {
     "name": "Wurzelheim Alexanderplatz"
   },
   "totals": {
-    "events": 290,
-    "uniqueParticipants": 4539,
-    "totalRsvps": 30931,
-    "totalCheckIns": 22562,
-    "totalAccepted": 7170,
-    "totalDeclined": 1196,
-    "avgCheckInsPerEvent": 78,
-    "checkInRate": 0.729,
+    "events": 329,
+    "uniqueParticipants": 5157,
+    "totalRsvps": 36563,
+    "totalCheckIns": 26752,
+    "totalAccepted": 8426,
+    "totalDeclined": 1382,
+    "avgCheckInsPerEvent": 81,
+    "checkInRate": 0.732,
     "firstEventDate": "2024-07-24T16:00:00Z",
-    "lastEventDate": "2026-06-27T12:00:00Z",
+    "lastEventDate": "2026-08-22T12:00:00Z",
     "biggestEvent": {
-      "id": "9017e093-ee09-42d6-824d-5d6f4be9d08d",
-      "name": "Pokemon GO Road Trip Raids 12 Uhr",
-      "date": "2025-08-09T10:00:00Z",
-      "address": "Breitscheidplatz Berlin",
-      "rsvps": 672,
-      "checkIns": 426,
-      "accepted": 232,
-      "declined": 14,
-      "type": "raids"
+      "id": "24254216-fca9-4de8-adbe-0ead8572ce4a",
+      "name": "Pokemon GO Fest 2026 Global Samstag",
+      "date": "2026-07-11T08:00:00Z",
+      "address": "dm, Berlin, Deutschland",
+      "rsvps": 693,
+      "checkIns": 556,
+      "accepted": 122,
+      "declined": 15,
+      "type": "goFestTour"
     },
     "firstEvent": {
       "id": "4b477c26-90fc-4d0f-942b-14474681c0c3",
@@ -225,14 +225,52 @@
     },
     {
       "month": "2026-06",
+      "events": 15,
+      "checkIns": 927,
+      "rsvps": 1334,
+      "newParticipants": 132,
+      "cumulativeParticipants": 4651
+    },
+    {
+      "month": "2026-07",
+      "events": 24,
+      "checkIns": 3263,
+      "rsvps": 4387,
+      "newParticipants": 505,
+      "cumulativeParticipants": 5156
+    },
+    {
+      "month": "2026-08",
       "events": 3,
       "checkIns": 0,
-      "rsvps": 171,
-      "newParticipants": 20,
-      "cumulativeParticipants": 4539
+      "rsvps": 82,
+      "newParticipants": 1,
+      "cumulativeParticipants": 5157
     }
   ],
   "topEvents": [
+    {
+      "id": "24254216-fca9-4de8-adbe-0ead8572ce4a",
+      "name": "Pokemon GO Fest 2026 Global Samstag",
+      "date": "2026-07-11T08:00:00Z",
+      "address": "dm, Berlin, Deutschland",
+      "rsvps": 693,
+      "checkIns": 556,
+      "accepted": 122,
+      "declined": 15,
+      "type": "goFestTour"
+    },
+    {
+      "id": "905dda41-e600-4031-be84-4266c87d4168",
+      "name": "Pokemon GO Fest Global Sonntag",
+      "date": "2026-07-12T09:00:00Z",
+      "address": "dm, Berlin, Deutschland",
+      "rsvps": 681,
+      "checkIns": 499,
+      "accepted": 171,
+      "declined": 11,
+      "type": "goFestTour"
+    },
     {
       "id": "9017e093-ee09-42d6-824d-5d6f4be9d08d",
       "name": "Pokemon GO Road Trip Raids 12 Uhr",
@@ -265,6 +303,17 @@
       "accepted": 56,
       "declined": 6,
       "type": "other"
+    },
+    {
+      "id": "436d394a-3a4d-4c24-864c-2c76a2a30a4c",
+      "name": "Mega-Raichu X & Y Raid-Tag",
+      "date": "2026-07-18T12:00:00Z",
+      "address": "dm, Berlin, Deutschland",
+      "rsvps": 378,
+      "checkIns": 278,
+      "accepted": 85,
+      "declined": 15,
+      "type": "raids"
     },
     {
       "id": "d93846f7-9f0b-4d53-b649-bd6e51a7c415",
@@ -311,6 +360,17 @@
       "type": "goFestTour"
     },
     {
+      "id": "da5d5d32-239f-4914-9167-e83218909565",
+      "name": "Weg der Legenden Donnerstag",
+      "date": "2026-07-09T16:00:00Z",
+      "address": "dm, Berlin, Deutschland",
+      "rsvps": 310,
+      "checkIns": 251,
+      "accepted": 49,
+      "declined": 10,
+      "type": "other"
+    },
+    {
       "id": "113333da-dd62-49d7-826f-baf58ff599a3",
       "name": "Pokemon GO Fest 2025 Dyna-Finale Sonntag",
       "date": "2025-08-24T10:00:00Z",
@@ -320,94 +380,50 @@
       "accepted": 86,
       "declined": 6,
       "type": "maxDynamax"
-    },
-    {
-      "id": "6768ed4a-4888-4a3f-b204-77987de05697",
-      "name": "Gigadynamax-Relaxo Dyna-Kampf-Tag 1843/2304 WP",
-      "date": "2025-12-14T13:00:00Z",
-      "address": "dm, Berlin, Deutschland",
-      "rsvps": 308,
-      "checkIns": 250,
-      "accepted": 52,
-      "declined": 6,
-      "type": "maxDynamax"
-    },
-    {
-      "id": "7349c1c2-978c-4d88-93bf-84805066a8b9",
-      "name": "Pokemon GO Tour Kalos Global Sonntag",
-      "date": "2026-03-01T09:00:00Z",
-      "address": "dm, Berlin, Deutschland",
-      "rsvps": 312,
-      "checkIns": 241,
-      "accepted": 63,
-      "declined": 8,
-      "type": "goFestTour"
-    },
-    {
-      "id": "886ae707-e4a2-4cfd-8e94-3ead5b6819a0",
-      "name": "Gigadynamax-Lapras Dyna-Kampf-Tag 1509 WP",
-      "date": "2025-07-19T12:00:00Z",
-      "address": "Öffentliche Toilette(neben der Alexwache)",
-      "rsvps": 278,
-      "checkIns": 220,
-      "accepted": 49,
-      "declined": 9,
-      "type": "maxDynamax"
-    },
-    {
-      "id": "c7ee504c-db65-474b-b549-5a03fe648424",
-      "name": "Gigadynamax-Mauzi Dyna-Kampftag",
-      "date": "2026-02-15T13:00:00Z",
-      "address": "dm, Berlin, Deutschland",
-      "rsvps": 253,
-      "checkIns": 218,
-      "accepted": 29,
-      "declined": 6,
-      "type": "maxDynamax"
     }
   ],
   "eventTypes": [
     {
       "type": "raids",
-      "count": 147,
-      "checkIns": 11125,
-      "avgCheckIns": 76
+      "count": 158,
+      "checkIns": 12381,
+      "avgCheckIns": 78
     },
     {
       "type": "maxDynamax",
-      "count": 54,
-      "checkIns": 5397,
-      "avgCheckIns": 100
+      "count": 58,
+      "checkIns": 5521,
+      "avgCheckIns": 95
     },
     {
       "type": "communityDay",
-      "count": 29,
-      "checkIns": 2063,
-      "avgCheckIns": 71
+      "count": 31,
+      "checkIns": 2320,
+      "avgCheckIns": 75
     },
     {
       "type": "other",
-      "count": 18,
-      "checkIns": 1441,
-      "avgCheckIns": 80
+      "count": 27,
+      "checkIns": 2601,
+      "avgCheckIns": 96
     },
     {
       "type": "trade",
-      "count": 12,
-      "checkIns": 183,
-      "avgCheckIns": 15
+      "count": 19,
+      "checkIns": 379,
+      "avgCheckIns": 20
     },
     {
       "type": "spotlight",
-      "count": 11,
-      "checkIns": 198,
+      "count": 13,
+      "checkIns": 240,
       "avgCheckIns": 18
     },
     {
       "type": "goFestTour",
-      "count": 8,
-      "checkIns": 1186,
-      "avgCheckIns": 148
+      "count": 12,
+      "checkIns": 2341,
+      "avgCheckIns": 195
     },
     {
       "type": "wildArea",
@@ -423,60 +439,60 @@
     }
   ],
   "loyalty": {
-    "everCheckedIn": 2768,
+    "everCheckedIn": 3184,
     "activeThreshold": 5,
-    "activeMembers": 854,
+    "activeMembers": 992,
     "medianActive": 11,
-    "avgActive": 22.9,
+    "avgActive": 23.4,
     "tiers": [
       {
         "key": "intro",
         "range": "1",
         "casual": true,
-        "people": 1245
+        "people": 1377
       },
       {
         "key": "casual",
         "range": "2–4",
         "casual": true,
-        "people": 669
+        "people": 815
       },
       {
         "key": "regular",
         "range": "5–14",
         "casual": false,
-        "people": 511
+        "people": 586
       },
       {
         "key": "core",
         "range": "15–49",
         "casual": false,
-        "people": 248
+        "people": 288
       },
       {
         "key": "hardcore",
         "range": "50–99",
         "casual": false,
-        "people": 61
+        "people": 75
       },
       {
         "key": "legend",
         "range": "100+",
         "casual": false,
-        "people": 34
+        "people": 43
       }
     ],
     "elite": {
-      "atLeast50": 95,
-      "atLeast100": 34,
-      "atLeast150": 9
+      "atLeast50": 118,
+      "atLeast100": 43,
+      "atLeast150": 15
     }
   },
   "topLocations": [
     {
       "address": "dm, Berlin, Deutschland",
-      "count": 175,
-      "checkIns": 18224
+      "count": 197,
+      "checkIns": 21910
     },
     {
       "address": "Polizeiwache am Alexanderplatz",
@@ -490,13 +506,13 @@
     },
     {
       "address": "Neptunbrunnen, Berlin, Deutschland",
-      "count": 13,
-      "checkIns": 415
+      "count": 24,
+      "checkIns": 850
     },
     {
       "address": "Alexanderplatz, Berlin, Deutschland",
       "count": 5,
-      "checkIns": 149
+      "checkIns": 165
     },
     {
       "address": "Hänsel, Berlin, Deutschland",
@@ -509,6 +525,11 @@
       "checkIns": 12
     },
     {
+      "address": "dm, Berlin, Germany",
+      "count": 4,
+      "checkIns": 25
+    },
+    {
       "address": "Wache am Alexanderplatz, Berlin, Deutschland",
       "count": 3,
       "checkIns": 30
@@ -517,11 +538,6 @@
       "address": "Am Friedrichshain, Berlin, Deutschland",
       "count": 3,
       "checkIns": 2
-    },
-    {
-      "address": "Weltzeituhr",
-      "count": 2,
-      "checkIns": 16
     }
   ]
 }

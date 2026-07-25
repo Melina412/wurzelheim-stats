@@ -18,9 +18,9 @@
     "server_error": "Etwas ist schiefgelaufen. Bitte später erneut versuchen."
   },
   "landing": {
-    "membersLabel": "Mitglieder",
-    "heroYears": "unter 2 Jahren",
-    "heroSubtitle": "In {years} von einer Handvoll Trainer:innen am Alexanderplatz zu einer der größten Communities in Berlin.",
+    "heroTitle": "2 Jahre",
+    "heroLabel": "Jubiläum",
+    "heroSubtitle": "Von einer Handvoll Trainer:innen am Alexanderplatz zu einer der größten Communities in Berlin.",
     "thanks": "Ein riesiges Dankeschön an {bobby} und {ute} — und an alle, die diese Community mit Herzblut am Leben halten. Ohne euch wären das hier nur Zahlen. 🫶"
   },
   "sections": {
